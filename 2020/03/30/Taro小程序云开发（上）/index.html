@@ -14,12 +14,12 @@
 <meta property="og:site_name" content="黄奕弟的博客">
 <meta property="og:description" content="Taro 介绍简介Taro  是一套遵循  React  语法规范的  多端开发  解决方案。 现如今市面上端的形态多种多样，Web、React-Native、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同的端去编写多套代码的成本显然非常高，这时候只编写一套代码就能够适配到多端的能力就显得极为需要。 使用  Taro，我们可以只书写一套代码，再通过  Taro">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/03/public/images/2020:03:30:1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/30/Taro%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8A%EF%BC%89/%5Bhttps://raw.githubusercontent.com/eddieyd/eddieyd.github.io/master/images/2020-03-30__1.jpg%5D(https://raw.githubusercontent.com/eddieyd/eddieyd.github.io/master/images/2020-03-30__1.jpg)">
 <meta property="article:published_time" content="2020-03-30T15:01:05.000Z">
-<meta property="article:modified_time" content="2020-03-30T15:33:42.000Z">
+<meta property="article:modified_time" content="2020-03-30T15:41:13.000Z">
 <meta property="article:author" content="yidier">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/public/images/2020:03:30:1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/30/Taro%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8A%EF%BC%89/%5Bhttps://raw.githubusercontent.com/eddieyd/eddieyd.github.io/master/images/2020-03-30__1.jpg%5D(https://raw.githubusercontent.com/eddieyd/eddieyd.github.io/master/images/2020-03-30__1.jpg)">
   
     <link rel="alternate" href="/atom.xml" title="黄奕弟的博客" type="application/atom+xml">
   
@@ -98,8 +98,6 @@
 <p>首先，你需要使用 npm 或者 yarn 全局安装<code>@tarojs/cli</code>，或者直接使用<a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" target="_blank" rel="noopener">npx</a>:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 使用 npm 安装 CLI</span><br><span class="line">$ npm install -g @tarojs/cli</span><br><span class="line"># OR 使用 yarn 安装 CLI</span><br><span class="line">$ yarn global add @tarojs/cli</span><br><span class="line"># OR 安装了 cnpm，使用 cnpm 安装 CLI</span><br><span class="line">$ cnpm install -g @tarojs/cli</span><br></pre></td></tr></table></figure>
 
-
-
 <h2 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h2><p>使用命令创建模板项目</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ taro init myApp</span><br></pre></td></tr></table></figure>
 
@@ -107,7 +105,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx @tarojs/cli init myApp</span><br></pre></td></tr></table></figure>
 
 <p>选择wxcloud  / 小程序云开发模板</p>
-<p><img src="../../public/images/2020:03:30:1.jpg" alt="1"></p>
+<p><img src="%5Bhttps://raw.githubusercontent.com/eddieyd/eddieyd.github.io/master/images/2020-03-30__1.jpg%5D(https://raw.githubusercontent.com/eddieyd/eddieyd.github.io/master/images/2020-03-30__1.jpg)" alt="1"></p>
 <p>模板目录结构</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">├── client                                  小程序端目录</span><br><span class="line">│   ├── config                              配置目录</span><br><span class="line">│   │   ├── dev.js                          开发时配置</span><br><span class="line">│   │   ├── index.js                        默认配置</span><br><span class="line">│   │   └── prod.js                         打包时配置</span><br><span class="line">│   ├── dist                                编译结果目录</span><br><span class="line">│   ├── package.json</span><br><span class="line">│   ├── src                                 源码目录</span><br><span class="line">│   │   ├── app.scss                        项目总通用样式</span><br><span class="line">│   │   ├── app.js                          项目入口文件</span><br><span class="line">│   │   ├── components                      组件文件目录</span><br><span class="line">│   │   │   └── login                       login 组件目录</span><br><span class="line">│   │   │       └── index.weapp.js          login 组件逻辑</span><br><span class="line">│   │   └── pages                           页面文件目录</span><br><span class="line">│   │       └── index                       index 页面目录</span><br><span class="line">│   │           ├── index.scss              index 页面逻辑</span><br><span class="line">│   │           └── index.js                index 页面样式</span><br><span class="line">├── cloud                                   服务端目录</span><br><span class="line">│   └── functions                           云函数目录</span><br><span class="line">│       └── login                           login 云函数</span><br><span class="line">│           ├── index.js                    login 函数逻辑</span><br><span class="line">│           └── package.json</span><br><span class="line">└── project.config.json                     小程序项目配置</span><br></pre></td></tr></table></figure>
 
