@@ -64,68 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Taro小程序云开发（上）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/30/Taro%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8A%EF%BC%89/" class="article-date">
-  <time datetime="2020-03-30T15:01:05.000Z" itemprop="datePublished">2020-03-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/Taro%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8A%EF%BC%89/">Taro小程序云开发（上）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Taro-介绍"><a href="#Taro-介绍" class="headerlink" title="Taro 介绍"></a>Taro 介绍</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>Taro</strong>  是一套遵循  <a href="https://reactjs.org/" target="_blank" rel="noopener">React</a>  语法规范的  <strong>多端开发</strong>  解决方案。</p>
-<p>现如今市面上端的形态多种多样，Web、React-Native、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同的端去编写多套代码的成本显然非常高，这时候只编写一套代码就能够适配到多端的能力就显得极为需要。</p>
-<p>使用  <strong>Taro</strong>，我们可以只书写一套代码，再通过  <strong>Taro</strong>  的编译工具，将源代码分别编译出可以在不同端（微信/百度/支付宝/字节跳动/QQ/京东小程序、快应用、H5、React-Native 等）运行的代码。</p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><h4 id="React-语法风格"><a href="#React-语法风格" class="headerlink" title="React 语法风格"></a>React 语法风格</h4><p><strong>Taro</strong>  遵循  <a href="https://reactjs.org/" target="_blank" rel="noopener">React</a>  语法规范，它采用与 React 一致的组件化思想，组件生命周期与 React 保持一致，同时支持使用  <a href="http://taro-docs.jd.com/taro/docs/jsx.html" target="_blank" rel="noopener">JSX 语法</a>，让代码具有更丰富的表现力，使用  <strong>Taro</strong>  进行开发可以获得和 React 一致的开发体验。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Taro 项目基于 node，请确保已具备较新的 node 环境（&gt;=8.0.0），推荐使用 node 版本管理工具  <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a>  来管理 node，这样不仅可以很方便地切换 node 版本，而且全局安装时候也不用加 sudo 了。</p>
-<p>首先，你需要使用 npm 或者 yarn 全局安装<code>@tarojs/cli</code>，或者直接使用<a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" target="_blank" rel="noopener">npx</a>:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 使用 npm 安装 CLI</span><br><span class="line">$ npm install -g @tarojs/cli</span><br><span class="line"># OR 使用 yarn 安装 CLI</span><br><span class="line">$ yarn global add @tarojs/cli</span><br><span class="line"># OR 安装了 cnpm，使用 cnpm 安装 CLI</span><br><span class="line">$ cnpm install -g @tarojs/cli</span><br></pre></td></tr></table></figure>
-
-<h2 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h2><p>使用命令创建模板项目</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ taro init myApp</span><br></pre></td></tr></table></figure>
-
-<p>npm 5.2+ 也可在不全局安装的情况下使用 npx 创建模板项目</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx @tarojs/cli init myApp</span><br></pre></td></tr></table></figure>
-
-<p>选择wxcloud  / 小程序云开发模板</p>
-<p><img src="../images/2020-03-30__1.jpg" alt="1"></p>
-<p>模板目录结构</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">├── client                                  小程序端目录</span><br><span class="line">│   ├── config                              配置目录</span><br><span class="line">│   │   ├── dev.js                          开发时配置</span><br><span class="line">│   │   ├── index.js                        默认配置</span><br><span class="line">│   │   └── prod.js                         打包时配置</span><br><span class="line">│   ├── dist                                编译结果目录</span><br><span class="line">│   ├── package.json</span><br><span class="line">│   ├── src                                 源码目录</span><br><span class="line">│   │   ├── app.scss                        项目总通用样式</span><br><span class="line">│   │   ├── app.js                          项目入口文件</span><br><span class="line">│   │   ├── components                      组件文件目录</span><br><span class="line">│   │   │   └── login                       login 组件目录</span><br><span class="line">│   │   │       └── index.weapp.js          login 组件逻辑</span><br><span class="line">│   │   └── pages                           页面文件目录</span><br><span class="line">│   │       └── index                       index 页面目录</span><br><span class="line">│   │           ├── index.scss              index 页面逻辑</span><br><span class="line">│   │           └── index.js                index 页面样式</span><br><span class="line">├── cloud                                   服务端目录</span><br><span class="line">│   └── functions                           云函数目录</span><br><span class="line">│       └── login                           login 云函数</span><br><span class="line">│           ├── index.js                    login 函数逻辑</span><br><span class="line">│           └── package.json</span><br><span class="line">└── project.config.json                     小程序项目配置</span><br></pre></td></tr></table></figure>
-
-<p>使用要点</p>
-<ol>
-<li><p>开发时，进入 client 目录，在此目录下运行相关编译预览或打包命令</p>
-</li>
-<li><p>使用微信开发者工具调试项目，请将项目 <strong>整个文件夹</strong> 作为运行目录。 注意： 不是 client 中生成的 dist 文件夹</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/30/Taro%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8A%EF%BC%89/" data-id="ck8eonjyy0000neqxgrlu4um0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-浅谈Debounce 与 Throttle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/22/%E6%B5%85%E8%B0%88Debounce%20%E4%B8%8E%20Throttle/" class="article-date">
@@ -172,7 +110,7 @@
 <p>节流函数，在 wait 秒内最多执行 fn 一次的函数。  </p>
 <p>与<code>deboucne</code>不同的是，<code>throttle</code>会有一个阀值，当到达阀值时，fn一定会执行。  </p>
 <p><strong>简单实现</strong>  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, wait, options</span>) </span>&#123;   </span><br><span class="line"></span><br><span class="line">    wait = wait || <span class="number">0</span>;   </span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> timerId, lastTime = <span class="number">0</span>;    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">throttled</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> currentTime = <span class="keyword">new</span> <span class="built_in">Date</span>();   </span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (currentTime &gt;= lastTime + wait) &#123;   </span><br><span class="line"></span><br><span class="line">            fn();   </span><br><span class="line"></span><br><span class="line">            lastTime = currentTime;   </span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;   </span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (timerId) &#123;   </span><br><span class="line"></span><br><span class="line">                clearTimeout(timerId);   </span><br><span class="line"></span><br><span class="line">                timerId = <span class="literal">null</span>;   </span><br><span class="line"></span><br><span class="line">            &#125;   </span><br><span class="line"></span><br><span class="line">            timerId = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line"></span><br><span class="line">                fn()   </span><br><span class="line"></span><br><span class="line">            &#125;, wait);   </span><br><span class="line"></span><br><span class="line">       &#125;   </span><br><span class="line"></span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> throttled;  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">著作权归作者所有。</span><br><span class="line">商业转载请联系作者获得授权,非商业转载请注明出处。</span><br><span class="line">原文: https:<span class="comment">//laixiazheteng.com/article/page/id/4qrB9JeihTKD © ghmagical.com</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, wait, options</span>) </span>&#123;   </span><br><span class="line"></span><br><span class="line">    wait = wait || <span class="number">0</span>;   </span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> timerId, lastTime = <span class="number">0</span>;    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">throttled</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> currentTime = <span class="keyword">new</span> <span class="built_in">Date</span>();   </span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (currentTime &gt;= lastTime + wait) &#123;   </span><br><span class="line"></span><br><span class="line">            fn();   </span><br><span class="line"></span><br><span class="line">            lastTime = currentTime;   </span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;   </span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (timerId) &#123;   </span><br><span class="line"></span><br><span class="line">                clearTimeout(timerId);   </span><br><span class="line"></span><br><span class="line">                timerId = <span class="literal">null</span>;   </span><br><span class="line"></span><br><span class="line">            &#125;   </span><br><span class="line"></span><br><span class="line">            timerId = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line"></span><br><span class="line">                fn()   </span><br><span class="line"></span><br><span class="line">            &#125;, wait);   </span><br><span class="line"></span><br><span class="line">       &#125;   </span><br><span class="line"></span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> throttled;  </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在上面的代码中，我们会记录每次函数被实际调用的时间，如果下次调用时，还没到达阀值，就会继续等待，直到到达阀值，就会调用最后一次函数。  </p>
 <p><strong>完整实例</strong></p>
@@ -362,10 +300,6 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2020/03/30/Taro%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8A%EF%BC%89/">Taro小程序云开发（上）</a>
-          </li>
         
           <li>
             <a href="/2020/03/22/%E6%B5%85%E8%B0%88Debounce%20%E4%B8%8E%20Throttle/">浅谈Debounce 与 Throttle</a>
