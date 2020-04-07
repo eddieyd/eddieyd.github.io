@@ -227,6 +227,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yidier">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yidier's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url">Taro 小程序云开发实战</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-07T22:06:35+08:00">
+                2020-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Taro-介绍"><a href="#Taro-介绍" class="headerlink" title="Taro 介绍"></a>Taro 介绍</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>Taro</strong> 是一套遵循 <a href="https://reactjs.org/" target="_blank" rel="noopener">React</a> 语法规范的 <strong>多端开发</strong> 解决方案。</p>
+<p>现如今市面上端的形态多种多样，Web、React-Native、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同的端去编写多套代码的成本显然非常高，这时候只编写一套代码就能够适配到多端的能力就显得极为需要。</p>
+<p>使用 <strong>Taro</strong>，我们可以只书写一套代码，再通过 <strong>Taro</strong> 的编译工具，将源代码分别编译出可以在不同端（微信/百度/支付宝/字节跳动/QQ/京东小程序、快应用、H5、React-Native 等）运行的代码。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p><strong>Taro</strong> 遵循 <a href="https://reactjs.org/" target="_blank" rel="noopener">React</a> 语法规范，它采用与 React 一致的组件化思想，组件生命周期与 React 保持一致，同时支持使用 <a href="http://taro-docs.jd.com/taro/docs/jsx.html" target="_blank" rel="noopener">JSX 语法</a>，让代码具有更丰富的表现力，使用 <strong>Taro</strong> 进行开发可以获得和 React 一致的开发体验。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><strong>Taro</strong> 项目基于 node，请确保已具备较新的 node 环境（&gt;=8.0.0），推荐使用 node 版本管理工具 <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 来管理 node，这样不仅可以很方便地切换 node 版本，而且全局安装时候也不用加 sudo 了。</p>
+<p>首先，你需要使用 npm 或者 yarn 全局安装<code>@tarojs/cli</code>，或者直接使用<a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" target="_blank" rel="noopener">npx</a>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 使用 npm 安装 CLI</span><br><span class="line">$ npm install -g @tarojs&#x2F;cli</span><br><span class="line"># OR 使用 yarn 安装 CLI</span><br><span class="line">$ yarn global add @tarojs&#x2F;cli</span><br><span class="line"># OR 安装了 cnpm，使用 cnpm 安装 CLI</span><br><span class="line">$ cnpm install -g @tarojs&#x2F;cli</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h2><p>使用命令创建模板项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ taro init myApp</span><br></pre></td></tr></table></figure>
+
+<p>npm 5.2+ 也可在不全局安装的情况下使用 npx 创建模板项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx @tarojs&#x2F;cli init myApp</span><br></pre></td></tr></table></figure>
+
+<p>选择wxcloud / 小程序云开发模板</p>
+<p><img src="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/1.jpg" alt></p>
+<p>模板目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">├── client                                  小程序端目录</span><br><span class="line">│   ├── config                              配置目录</span><br><span class="line">│   │   ├── dev.js                          开发时配置</span><br><span class="line">│   │   ├── index.js                        默认配置</span><br><span class="line">│   │   └── prod.js                         打包时配置</span><br><span class="line">│   ├── dist                                编译结果目录</span><br><span class="line">│   ├── package.json</span><br><span class="line">│   ├── src                                 源码目录</span><br><span class="line">│   │   ├── app.scss                        项目总通用样式</span><br><span class="line">│   │   ├── app.js                          项目入口文件</span><br><span class="line">│   │   ├── components                      组件文件目录</span><br><span class="line">│   │   │   └── login                       login 组件目录</span><br><span class="line">│   │   │       └── index.weapp.js          login 组件逻辑</span><br><span class="line">│   │   └── pages                           页面文件目录</span><br><span class="line">│   │       └── index                       index 页面目录</span><br><span class="line">│   │           ├── index.scss              index 页面逻辑</span><br><span class="line">│   │           └── index.js                index 页面样式</span><br><span class="line">├── cloud                                   服务端目录</span><br><span class="line">│   └── functions                           云函数目录</span><br><span class="line">│       └── login                           login 云函数</span><br><span class="line">│           ├── index.js                    login 函数逻辑</span><br><span class="line">│           └── package.json</span><br><span class="line">└── project.config.json                     小程序项目配置</span><br></pre></td></tr></table></figure>
+
+<p>使用要点</p>
+<ul>
+<li><p>开发时，进入 client 目录，在此目录下运行相关编译预览或打包命令</p>
+</li>
+<li><p>使用微信开发者工具调试项目，请将项目 <strong>整个文件夹</strong> 作为运行目录。 注意： 不是 client 中生成的 dist 文件夹</p>
+</li>
+</ul>
+<h2 id="小程序云函数"><a href="#小程序云函数" class="headerlink" title="小程序云函数"></a>小程序云函数</h2><p>登陆云函数示例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cloud = <span class="built_in">require</span>(<span class="string">'wx-server-sdk'</span>)</span><br><span class="line">cloud.init()</span><br><span class="line">exports.main = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line"> <span class="keyword">const</span> wxContext = cloud.getWXContext()</span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line"> openid: wxContext.OPENID,</span><br><span class="line"> appid: wxContext.APPID,</span><br><span class="line"> unionid: wxContext.UNIONID,</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在页面中调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Taro.cloud</span><br><span class="line"> .callFunction(&#123;</span><br><span class="line"> name: <span class="string">"login"</span>,</span><br><span class="line"> data: &#123;&#125;</span><br><span class="line"> &#125;)</span><br><span class="line"> .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">this</span>.setState(&#123;</span><br><span class="line"> context: res.result</span><br><span class="line"> &#125;)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="云开发踩坑"><a href="#云开发踩坑" class="headerlink" title="云开发踩坑"></a>云开发踩坑</h2><h4 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h4><p>小程序云开发数据库的 <a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/Collection.html" target="_blank" rel="noopener">Collection</a> 的时间查询和 <a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/aggregate/Aggregate.html" target="_blank" rel="noopener">Aggregate</a> 的时间筛选是不一样的。</p>
+<p>Collection</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.collection(<span class="string">'record'</span>).where(&#123;</span><br><span class="line">        date: _.and([_.gte(first_day), _.lte(last_day)]),</span><br><span class="line">      &#125;)</span><br><span class="line">      .get()</span><br></pre></td></tr></table></figure>
+
+<p>Aggregate 中筛选日期，需要先使用 <a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/command/aggregate/AggregateCommand.dateFromString.html" target="_blank" rel="noopener">dateFromString</a> 转换日期格式，再进行查询</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> queryStart = $.dateFromString(&#123;<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'your start date'</span>).toJSON()</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">let</span> queryEnd = $.dateFromString(&#123;<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'your end date'</span>).toJSON()</span><br><span class="line"> &#125;)</span><br><span class="line"> </span><br><span class="line">.aggregate()</span><br><span class="line">            db.collection(<span class="string">'day_record'</span>).addFields(&#123;</span><br><span class="line">                matched: $.and([$.gte([<span class="string">'$date'</span>, queryStart]), $.lte([<span class="string">'$date'</span>, queryEnd])])</span><br><span class="line">            &#125;)</span><br><span class="line">            .match(&#123;</span><br><span class="line">                matched: <span class="literal">true</span>,</span><br><span class="line">                type: type,</span><br><span class="line">                _openid: openid</span><br><span class="line">            &#125;)</span><br><span class="line">            .group(&#123;</span><br><span class="line">                _id: <span class="literal">null</span>,</span><br><span class="line">                total_money: $.sum(<span class="string">'$money'</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">            .end()</span><br></pre></td></tr></table></figure>
+
+<h4 id="定时触发器"><a href="#定时触发器" class="headerlink" title="定时触发器"></a>定时触发器</h4><p>需要在目录添加 <a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/functions/triggers.html" target="_blank" rel="noopener">定时触发器</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"triggers"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"timeTrigger"</span>,</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"timer"</span>,</span><br><span class="line">      <span class="string">"config"</span>: <span class="string">"0 0 9 * * * *"</span> <span class="comment">// 每天早上 9 点触发</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="订阅消息"><a href="#订阅消息" class="headerlink" title="订阅消息"></a>订阅消息</h4><h6 id="步骤一：小程序添加消息模板"><a href="#步骤一：小程序添加消息模板" class="headerlink" title="步骤一：小程序添加消息模板"></a>步骤一：小程序添加消息模板</h6><p>没开通的要先在微信公众平台开通订阅消息功能</p>
+<p><img src="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2.jpg" alt></p>
+<p><img src="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/3.jpg" alt></p>
+<h6 id="步骤二：获取模板ID"><a href="#步骤二：获取模板ID" class="headerlink" title="步骤二：获取模板ID"></a>步骤二：获取模板ID</h6><p><img src="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/4.jpg" alt></p>
+<h6 id="步骤三：获取下发权限-wx-requestSubscribeMessage"><a href="#步骤三：获取下发权限-wx-requestSubscribeMessage" class="headerlink" title="步骤三：获取下发权限 wx.requestSubscribeMessage"></a>步骤三：获取下发权限 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html" target="_blank" rel="noopener">wx.requestSubscribeMessage</a></h6><h6 id="步骤四：调用接口下发订阅消息-subscribeMessage-send"><a href="#步骤四：调用接口下发订阅消息-subscribeMessage-send" class="headerlink" title="步骤四：调用接口下发订阅消息 subscribeMessage.send"></a>步骤四：调用接口下发订阅消息 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html" target="_blank" rel="noopener">subscribeMessage.send</a></h6><blockquote>
+<p>云调用需在  <code>config.json</code>  中配置  <code>subscribeMessage.send</code>  API 的权限，<a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/openapi/openapi.html#usage-3" target="_blank" rel="noopener">详情</a></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"permissions"</span>: &#123;</span><br><span class="line">    <span class="string">"openapi"</span>: [</span><br><span class="line">      <span class="string">"subscribeMessage.send"</span>,</span><br><span class="line">      <span class="string">"subscribeMessage.getTemplateList"</span> <span class="comment">// 获取订阅消息模板列表</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发送消息订阅消息</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> cloud.openapi.subscribeMessage.send(&#123;</span><br><span class="line">                touser: _openid,</span><br><span class="line">                page: <span class="string">'pages/start/index'</span>,</span><br><span class="line">                data: &#123;</span><br><span class="line">                    amount4: &#123;</span><br><span class="line">                        value: pay + <span class="string">'元'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    amount5: &#123;</span><br><span class="line">                        value: income + <span class="string">'元'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    amount10: &#123;</span><br><span class="line">                        value: sum + <span class="string">'元'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    thing9: &#123;</span><br><span class="line">                        value: <span class="string">'昨日账单'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    date12: &#123;</span><br><span class="line">                        value: common.dateFormat(<span class="string">"YYYY-mm-dd HH:MM:SS"</span>, date)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                templateId: data[<span class="number">0</span>].priTmplId <span class="comment">// 目前只有一个订阅消息，后期要加这里记得改</span></span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h2><p><a href="https://github.com/eddieyd/mini-bookkeeping" target="_blank" rel="noopener">「易丨记账」—— 一款信用卡账单记账小程序</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/04/06/%E8%BD%AC%E5%8F%91%E6%88%BF%E4%BA%A7%E6%96%87%E7%AB%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -299,159 +475,6 @@
         
           
             <p><img src="/2020/04/06/%E8%BD%AC%E5%8F%91%E6%88%BF%E4%BA%A7%E6%96%87%E7%AB%A0/IMG_9003.PNG" alt="1"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/04/06/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yidier">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yidier's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/06/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url">Taro 小程序云开发实战</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-06T17:06:35+08:00">
-                2020-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Taro-介绍"><a href="#Taro-介绍" class="headerlink" title="Taro 介绍"></a>Taro 介绍</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>Taro</strong> 是一套遵循 <a href="https://reactjs.org/" target="_blank" rel="noopener">React</a> 语法规范的 <strong>多端开发</strong> 解决方案。</p>
-<p>现如今市面上端的形态多种多样，Web、React-Native、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同的端去编写多套代码的成本显然非常高，这时候只编写一套代码就能够适配到多端的能力就显得极为需要。</p>
-<p>使用 <strong>Taro</strong>，我们可以只书写一套代码，再通过 <strong>Taro</strong> 的编译工具，将源代码分别编译出可以在不同端（微信/百度/支付宝/字节跳动/QQ/京东小程序、快应用、H5、React-Native 等）运行的代码。</p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p><strong>Taro</strong> 遵循 <a href="https://reactjs.org/" target="_blank" rel="noopener">React</a> 语法规范，它采用与 React 一致的组件化思想，组件生命周期与 React 保持一致，同时支持使用 <a href="http://taro-docs.jd.com/taro/docs/jsx.html" target="_blank" rel="noopener">JSX 语法</a>，让代码具有更丰富的表现力，使用 <strong>Taro</strong> 进行开发可以获得和 React 一致的开发体验。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><strong>Taro</strong> 项目基于 node，请确保已具备较新的 node 环境（&gt;=8.0.0），推荐使用 node 版本管理工具 <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 来管理 node，这样不仅可以很方便地切换 node 版本，而且全局安装时候也不用加 sudo 了。</p>
-<p>首先，你需要使用 npm 或者 yarn 全局安装<code>@tarojs/cli</code>，或者直接使用<a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" target="_blank" rel="noopener">npx</a>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 使用 npm 安装 CLI</span><br><span class="line">$ npm install -g @tarojs&#x2F;cli</span><br><span class="line"># OR 使用 yarn 安装 CLI</span><br><span class="line">$ yarn global add @tarojs&#x2F;cli</span><br><span class="line"># OR 安装了 cnpm，使用 cnpm 安装 CLI</span><br><span class="line">$ cnpm install -g @tarojs&#x2F;cli</span><br></pre></td></tr></table></figure>
-
-<h2 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h2><p>使用命令创建模板项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ taro init myApp</span><br></pre></td></tr></table></figure>
-
-<p>npm 5.2+ 也可在不全局安装的情况下使用 npx 创建模板项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx @tarojs&#x2F;cli init myApp</span><br></pre></td></tr></table></figure>
-
-<p>选择wxcloud / 小程序云开发模板</p>
-<p><img src="/2020/04/06/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/1.jpg" alt></p>
-<p>模板目录结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">├── client                                  小程序端目录</span><br><span class="line">│   ├── config                              配置目录</span><br><span class="line">│   │   ├── dev.js                          开发时配置</span><br><span class="line">│   │   ├── index.js                        默认配置</span><br><span class="line">│   │   └── prod.js                         打包时配置</span><br><span class="line">│   ├── dist                                编译结果目录</span><br><span class="line">│   ├── package.json</span><br><span class="line">│   ├── src                                 源码目录</span><br><span class="line">│   │   ├── app.scss                        项目总通用样式</span><br><span class="line">│   │   ├── app.js                          项目入口文件</span><br><span class="line">│   │   ├── components                      组件文件目录</span><br><span class="line">│   │   │   └── login                       login 组件目录</span><br><span class="line">│   │   │       └── index.weapp.js          login 组件逻辑</span><br><span class="line">│   │   └── pages                           页面文件目录</span><br><span class="line">│   │       └── index                       index 页面目录</span><br><span class="line">│   │           ├── index.scss              index 页面逻辑</span><br><span class="line">│   │           └── index.js                index 页面样式</span><br><span class="line">├── cloud                                   服务端目录</span><br><span class="line">│   └── functions                           云函数目录</span><br><span class="line">│       └── login                           login 云函数</span><br><span class="line">│           ├── index.js                    login 函数逻辑</span><br><span class="line">│           └── package.json</span><br><span class="line">└── project.config.json                     小程序项目配置</span><br></pre></td></tr></table></figure>
-
-<p>使用要点</p>
-<ul>
-<li><p>开发时，进入 client 目录，在此目录下运行相关编译预览或打包命令</p>
-</li>
-<li><p>使用微信开发者工具调试项目，请将项目 <strong>整个文件夹</strong> 作为运行目录。 注意： 不是 client 中生成的 dist 文件夹</p>
-</li>
-</ul>
-<h2 id="小程序云函数"><a href="#小程序云函数" class="headerlink" title="小程序云函数"></a>小程序云函数</h2><p>登陆云函数示例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cloud = <span class="built_in">require</span>(<span class="string">'wx-server-sdk'</span>)</span><br><span class="line">cloud.init()</span><br><span class="line">exports.main = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line"> <span class="keyword">const</span> wxContext = cloud.getWXContext()</span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line"> openid: wxContext.OPENID,</span><br><span class="line"> appid: wxContext.APPID,</span><br><span class="line"> unionid: wxContext.UNIONID,</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在页面中调用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Taro.cloud</span><br><span class="line"> .callFunction(&#123;</span><br><span class="line"> name: <span class="string">"login"</span>,</span><br><span class="line"> data: &#123;&#125;</span><br><span class="line"> &#125;)</span><br><span class="line"> .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">this</span>.setState(&#123;</span><br><span class="line"> context: res.result</span><br><span class="line"> &#125;)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>项目实战</p>
-<p><a href="https://github.com/eddieyd/mini-bookkeeping" target="_blank" rel="noopener">「易丨记账」—— 一款信用卡账单记账小程序</a></p>
 
           
         
