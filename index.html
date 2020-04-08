@@ -227,6 +227,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/04/08/2020-04-08/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yidier">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yidier's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/08/2020-04-08/" itemprop="url">Vue 图片压缩并上传至服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-08T19:49:33+08:00">
+                2020-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、工具类封装"><a href="#一、工具类封装" class="headerlink" title="一、工具类封装"></a>一、工具类封装</h2><p>本文主要讲解基于 Vue + Vant ，实现移动端图片选择，并用 Canvas 压缩图片，最后上传至服务器。还会封装一个工具类，方便直接调用。</p>
+<p>废话不多说先上代码，封装一个 <code>CompressImageUtils</code> 工具类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 图片压缩工具类</span></span><br><span class="line"><span class="comment"> * 最大高度和最大宽度都为 500，如果超出大小将等比例缩放。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 注意可能出现压缩后比原图更大的情况，在调用的地方自己判断大小并决定上传压缩前或压缩后的图到服务器。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将base64转换为blob</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">convertBase64UrlToBlob</span>(<span class="params">urlData</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> arr = urlData.split(<span class="string">','</span>)</span><br><span class="line">  <span class="keyword">let</span> mime = arr[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>]</span><br><span class="line">  <span class="keyword">let</span> bstr = atob(arr[<span class="number">1</span>])</span><br><span class="line">  <span class="keyword">let</span> n = bstr.length</span><br><span class="line">  <span class="keyword">let</span> u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n)</span><br><span class="line">  <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">    u8arr[n] = bstr.charCodeAt(n)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Blob([u8arr], &#123;<span class="attr">type</span>: mime&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 压缩图片</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">compressImage</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//最大高度</span></span><br><span class="line">  <span class="keyword">const</span> maxHeight = <span class="number">500</span>;</span><br><span class="line">  <span class="comment">//最大宽度</span></span><br><span class="line">  <span class="keyword">const</span> maxWidth = <span class="number">500</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">    img.src = path;</span><br><span class="line">    img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> originHeight = img.height;</span><br><span class="line">      <span class="keyword">const</span> originWidth = img.width;</span><br><span class="line">      <span class="keyword">let</span> compressedWidth = img.height;</span><br><span class="line">      <span class="keyword">let</span> compressedHeight = img.width;</span><br><span class="line">      <span class="keyword">if</span> ((originWidth &gt; maxWidth) &amp;&amp; (originHeight &gt; maxHeight)) &#123;</span><br><span class="line">        <span class="comment">// 更宽更高，</span></span><br><span class="line">        <span class="keyword">if</span> ((originHeight / originWidth) &gt; (maxHeight / maxWidth)) &#123;</span><br><span class="line">          <span class="comment">// 更加严重的高窄型，确定最大高，压缩宽度</span></span><br><span class="line">          compressedHeight = maxHeight</span><br><span class="line">          compressedWidth = maxHeight * (originWidth / originHeight)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">//更加严重的矮宽型, 确定最大宽，压缩高度</span></span><br><span class="line">          compressedWidth = maxWidth</span><br><span class="line">          compressedHeight = maxWidth * (originHeight / originWidth)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (originWidth &gt; maxWidth &amp;&amp; originHeight &lt;= maxHeight) &#123;</span><br><span class="line">        <span class="comment">// 更宽，但比较矮，以maxWidth作为基准</span></span><br><span class="line">        compressedWidth = maxWidth</span><br><span class="line">        compressedHeight = maxWidth * (originHeight / originWidth)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (originWidth &lt;= maxWidth &amp;&amp; originHeight &gt; maxHeight) &#123;</span><br><span class="line">        <span class="comment">// 比较窄，但很高，取maxHight为基准</span></span><br><span class="line">        compressedHeight = maxHeight</span><br><span class="line">        compressedWidth = maxHeight * (originWidth / originHeight)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 符合宽高限制，不做压缩</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 生成canvas</span></span><br><span class="line">      <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">      <span class="keyword">let</span> context = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">      canvas.height = compressedHeight;</span><br><span class="line">      canvas.width = compressedWidth;</span><br><span class="line">      context.clearRect(<span class="number">0</span>, <span class="number">0</span>, compressedWidth, compressedHeight);</span><br><span class="line">      context.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, compressedWidth, compressedHeight);</span><br><span class="line">      <span class="keyword">let</span> base64 = canvas.toDataURL(<span class="string">'image/*'</span>, <span class="number">0.8</span>);</span><br><span class="line">      <span class="keyword">let</span> blob = convertBase64UrlToBlob(base64);</span><br><span class="line">      <span class="comment">// 回调函数返回blob的值。也可根据自己的需求返回base64的值</span></span><br><span class="line">      resolve(blob)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义的最大宽度和最大高度均为 500，如果图片的宽高至少有一个超出了 500，都会被 <strong>等比例压缩</strong>，不用担心变形。可以根据自己项目需要改变<code>maxWidth</code> 和 <code>maxHeight</code> 。</p>
+<p>这里直接把压缩的最大高度和最大宽度写死为 500 了，没有在调用时传。因为一个项目压缩的逻辑和大小一般都一致的，没必要在每次调用的时候传。当然如果想写的灵活一点，可以在 <code>compressImage</code> 方法里再把 <code>maxWidth</code> 、 <code>maxHeight</code> 和压缩质量传上。</p>
+<p><code>compressImage</code> 方法返回的是 blob 值，根据服务端接口需要可以改为返回 base64，只需将 <code>resolve(blob)</code> 改为 <code>resolve(base64)</code> 即可。</p>
+<p>注意一点，对于有些宽高没到 500，且分辨率很小的图片，压缩之后可能比之前还大。猜测可能是 canvas 生成的图片分辨率要比原来高一些，所以最终的图片比压缩前更大。可以在调用的地方加个判断，如果压缩完的大小比原图小，就上传压缩后的图片；如果如果压缩完的大小比原图大，就上传原图。</p>
+<h2 id="二、如何使用"><a href="#二、如何使用" class="headerlink" title="二、如何使用"></a>二、如何使用</h2><p>将 <code>CompressImageUtils</code> 引入到目标文件，然后调用 <code>compressImage</code> 方法，即可在回调里获得压缩后的结果。注意 <code>compressImage</code> 方法返回的是 Promise。<br>省略其他无关代码，只保留跟压缩图片和上传相关的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;van-uploader v-model=<span class="string">"fileList"</span> :after-read=<span class="string">"afterRead"</span> /&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> &#123;compressImage&#125; <span class="keyword">from</span> <span class="string">'../../utils/CompressImageUtils'</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    components: &#123;&#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      </span><br><span class="line">     <span class="comment">//读取完图片后</span></span><br><span class="line">      afterRead(file) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'afterRead------'</span>, file);</span><br><span class="line">        <span class="keyword">this</span>._compressAndUploadFile(file);</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">//压缩图片上传</span></span><br><span class="line">      _compressAndUploadFile(file) &#123;</span><br><span class="line">        compressImage(file.content).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩后的结果'</span>, result); <span class="comment">// result即为压缩后的结果</span></span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩前大小'</span>, file.file.size);</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩后大小'</span>, result.size);</span><br><span class="line">          <span class="keyword">if</span> (result.size &gt; file.file.size)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'上传原图'</span>);</span><br><span class="line">            <span class="comment">//压缩后比原来更大，则将原图上传</span></span><br><span class="line">            <span class="keyword">this</span>._uploadFile(file.file, file.file.name);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//压缩后比原来小，上传压缩后的</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'上传压缩图'</span>);</span><br><span class="line">            <span class="keyword">this</span>._uploadFile(result, file.file.name)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">//上传图片</span></span><br><span class="line">      _uploadFile(file, filename) &#123;</span><br><span class="line">        <span class="keyword">let</span> params = <span class="keyword">new</span> FormData();</span><br><span class="line">        params.append(<span class="string">"file"</span>, file, filename);</span><br><span class="line">        <span class="keyword">this</span>.$api.uploadImage(params).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'uploadImage'</span>, res);</span><br><span class="line">					<span class="comment">//上传成功，写自己的逻辑</span></span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;, </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在返回结果中加了层判断，压缩后比原来更大，则将原图上传；压缩后比原来小，上传压缩后的。解决压缩后比原图更大的情况。<br><code>this.$api.uploadImage(params)</code> 是调用封装的 api 方法，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传图片</span></span><br><span class="line">uploadImage(params)&#123;</span><br><span class="line">   <span class="keyword">return</span> axios.post(<span class="string">`<span class="subst">$&#123;base&#125;</span>/api/v1/file`</span>, params, &#123;</span><br><span class="line">     headers: &#123;<span class="string">'content-type'</span>: <span class="string">'multipart/form-data'</span>&#125;</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、使用效果"><a href="#三、使用效果" class="headerlink" title="三、使用效果"></a>三、使用效果</h2><p>先上传一个非常大的，尺寸为 6016 × 4016，16.8M 的大图，看输出日志，压缩后大小仅为 260k 左右。此时判断压缩后比压缩前小，上传压缩图到服务器。</p>
+<p><img src="/2020/04/08/2020-04-08/1.jpg" alt></p>
+<p>再看个尺寸 300 × 300，12k 的小图，压缩前大小是 11252，压缩后大小是 93656，大了很多。此时判断压缩后比压缩前更大，上传的是原图。</p>
+<p><img src="/2020/04/08/2020-04-08/2.jpg" alt></p>
+<p>总结：这个工具类对大图的压缩效果很明显，不管多大的图，压缩之后基本不会超过 300k。但对某些小图可能出现压缩完反而更大的情况。在调用的地方加层压缩后和压缩前大小的比较判断，会完美解决这个问题。<br>当然也可以在工具类内部判断，但个人觉得跟业务逻辑相关的代码还是不要放在公用的工具类比较好。</p>
+<p><a href="https://juejin.im/post/5e1e8129e51d453cee48cd8b" target="_blank" rel="noopener">原文链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -927,7 +1066,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
