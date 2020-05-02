@@ -81,7 +81,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="yidier&#39;s blogs">
-<meta property="og:url" content="https://eddieyd.github.io/index.html">
+<meta property="og:url" content="https://yidierh.github.io/index.html">
 <meta property="og:site_name" content="yidier&#39;s blogs">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="yidier">
@@ -115,7 +115,7 @@
 
 
 
-  <link rel="canonical" href="https://eddieyd.github.io/"/>
+  <link rel="canonical" href="https://yidierh.github.io/"/>
 
 
 
@@ -227,7 +227,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/05/02/ES6%EF%BC%88Generator%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/05/02/ES6%EF%BC%88Generator%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yidier">
@@ -403,7 +403,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/04/08/2020-04-08/">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/04/08/2020-04-08/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yidier">
@@ -542,7 +542,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yidier">
@@ -645,14 +645,12 @@
 <p>在页面中调用</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Taro.cloud</span><br><span class="line"> .callFunction(&#123;</span><br><span class="line"> name: <span class="string">"login"</span>,</span><br><span class="line"> data: &#123;&#125;</span><br><span class="line"> &#125;)</span><br><span class="line"> .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">this</span>.setState(&#123;</span><br><span class="line"> context: res.result</span><br><span class="line"> &#125;)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
 
-
-
 <h2 id="云开发踩坑"><a href="#云开发踩坑" class="headerlink" title="云开发踩坑"></a>云开发踩坑</h2><h4 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h4><p>小程序云开发数据库的 <a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/Collection.html" target="_blank" rel="noopener">Collection</a> 的时间查询和 <a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/aggregate/Aggregate.html" target="_blank" rel="noopener">Aggregate</a> 的时间筛选是不一样的。</p>
 <p>Collection</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.collection(<span class="string">'record'</span>).where(&#123;</span><br><span class="line">        date: _.and([_.gte(first_day), _.lte(last_day)]),</span><br><span class="line">      &#125;)</span><br><span class="line">      .get()</span><br></pre></td></tr></table></figure>
 
 <p>Aggregate 中筛选日期，需要先使用 <a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/command/aggregate/AggregateCommand.dateFromString.html" target="_blank" rel="noopener">dateFromString</a> 转换日期格式，再进行查询</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> queryStart = $.dateFromString(&#123;<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'your start date'</span>).toJSON()</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">let</span> queryEnd = $.dateFromString(&#123;<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'your end date'</span>).toJSON()</span><br><span class="line"> &#125;)</span><br><span class="line"> </span><br><span class="line">.aggregate()</span><br><span class="line">            db.collection(<span class="string">'day_record'</span>).addFields(&#123;</span><br><span class="line">                matched: $.and([$.gte([<span class="string">'$date'</span>, queryStart]), $.lte([<span class="string">'$date'</span>, queryEnd])])</span><br><span class="line">            &#125;)</span><br><span class="line">            .match(&#123;</span><br><span class="line">                matched: <span class="literal">true</span>,</span><br><span class="line">                type: type,</span><br><span class="line">                _openid: openid</span><br><span class="line">            &#125;)</span><br><span class="line">            .group(&#123;</span><br><span class="line">                _id: <span class="literal">null</span>,</span><br><span class="line">                total_money: $.sum(<span class="string">'$money'</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">            .end()</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> queryStart = $.dateFromString(&#123;<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'your start date'</span>).toJSON()</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">let</span> queryEnd = $.dateFromString(&#123;<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'your end date'</span>).toJSON()</span><br><span class="line"> &#125;)</span><br><span class="line"></span><br><span class="line">.aggregate()</span><br><span class="line">            db.collection(<span class="string">'day_record'</span>).addFields(&#123;</span><br><span class="line">                matched: $.and([$.gte([<span class="string">'$date'</span>, queryStart]), $.lte([<span class="string">'$date'</span>, queryEnd])])</span><br><span class="line">            &#125;)</span><br><span class="line">            .match(&#123;</span><br><span class="line">                matched: <span class="literal">true</span>,</span><br><span class="line">                type: type,</span><br><span class="line">                _openid: openid</span><br><span class="line">            &#125;)</span><br><span class="line">            .group(&#123;</span><br><span class="line">                _id: <span class="literal">null</span>,</span><br><span class="line">                total_money: $.sum(<span class="string">'$money'</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">            .end()</span><br></pre></td></tr></table></figure>
 
 <h4 id="定时触发器"><a href="#定时触发器" class="headerlink" title="定时触发器"></a>定时触发器</h4><p>需要在目录添加 <a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/functions/triggers.html" target="_blank" rel="noopener">config.json</a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"triggers"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"timeTrigger"</span>,</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"timer"</span>,</span><br><span class="line">      <span class="string">"config"</span>: <span class="string">"0 0 9 * * * *"</span> <span class="comment">// 每天早上 9 点触发</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -669,7 +667,7 @@
 <p>发送消息订阅消息</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> cloud.openapi.subscribeMessage.send(&#123;</span><br><span class="line">                touser: _openid,</span><br><span class="line">                page: <span class="string">'pages/start/index'</span>,</span><br><span class="line">                data: &#123;</span><br><span class="line">                    amount4: &#123;</span><br><span class="line">                        value: pay + <span class="string">'元'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    amount5: &#123;</span><br><span class="line">                        value: income + <span class="string">'元'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    amount10: &#123;</span><br><span class="line">                        value: sum + <span class="string">'元'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    thing9: &#123;</span><br><span class="line">                        value: <span class="string">'昨日账单'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    date12: &#123;</span><br><span class="line">                        value: common.dateFormat(<span class="string">"YYYY-mm-dd HH:MM:SS"</span>, date)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                templateId: data[<span class="number">0</span>].priTmplId <span class="comment">// 目前只有一个订阅消息，后期要加这里记得改</span></span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
-<h2 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h2><p><a href="https://github.com/eddieyd/mini-bookkeeping" target="_blank" rel="noopener">「易丨记账」—— 一款信用卡账单记账小程序</a></p>
+<h2 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h2><p><a href="https://github.com/yidierh/mini-bookkeeping" target="_blank" rel="noopener">「易丨记账」—— 一款信用卡账单记账小程序</a></p>
 
           
         
@@ -718,7 +716,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/04/06/%E8%BD%AC%E5%8F%91%E6%88%BF%E4%BA%A7%E6%96%87%E7%AB%A0/">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/04/06/%E8%BD%AC%E5%8F%91%E6%88%BF%E4%BA%A7%E6%96%87%E7%AB%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yidier">
@@ -838,7 +836,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/03/22/%E6%B5%85%E8%B0%88Debounce%20%E4%B8%8E%20Throttle/">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/03/22/%E6%B5%85%E8%B0%88Debounce%20%E4%B8%8E%20Throttle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yidier">
@@ -999,7 +997,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://eddieyd.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E4%B9%8BJS%E7%9A%84%E7%BA%BF%E7%A8%8B(%E6%9C%80%E6%98%93%E6%87%82)/">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E4%B9%8BJS%E7%9A%84%E7%BA%BF%E7%A8%8B(%E6%9C%80%E6%98%93%E6%87%82)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yidier">
