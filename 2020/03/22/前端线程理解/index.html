@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/archives/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,27 +48,27 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/archives/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+<link href="/archives/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/archives/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/archives/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/archives/images/favicon-16x16-next.png?v=5.1.4">
 
 
+  <link rel="mask-icon" href="/archives/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-  <meta name="keywords" content="yidier's blog" />
+
+
+  <meta name="keywords" content="浏览器," />
 
 
 
@@ -81,8 +81,8 @@
 
 <meta name="description" content="1. 前言很多文章在介绍线程以及线程之间的关系，都存在着脱节的现象。还有的文章过于广大，涉及到了内核，本文希望以通俗易懂的话去描述晦涩的词语，可能会和实际有一丢丢的出入，但是更易理解。 我们都知道JS是单线程的，即js的代码只能在一个线程上运行，也就说，js同时只能执行一个js任务，但是为什么要这样呢？这与浏览器的用途有关，JS的主要用途是与用户互动和操作DOM。设想一段JS代码，分发到两个并行互">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端之JS的线程(最易懂)">
-<meta property="og:url" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E4%B9%8BJS%E7%9A%84%E7%BA%BF%E7%A8%8B(%E6%9C%80%E6%98%93%E6%87%82)/index.html">
+<meta property="og:title" content="前端线程理解">
+<meta property="og:url" content="https://yidierh.github.io/archives/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="yidier&#39;s blogs">
 <meta property="og:description" content="1. 前言很多文章在介绍线程以及线程之间的关系，都存在着脱节的现象。还有的文章过于广大，涉及到了内核，本文希望以通俗易懂的话去描述晦涩的词语，可能会和实际有一丢丢的出入，但是更易理解。 我们都知道JS是单线程的，即js的代码只能在一个线程上运行，也就说，js同时只能执行一个js任务，但是为什么要这样呢？这与浏览器的用途有关，JS的主要用途是与用户互动和操作DOM。设想一段JS代码，分发到两个并行互">
 <meta property="og:locale" content="en_US">
@@ -94,9 +94,10 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/8/1682b7da0f89d552?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16818e049fd1a479?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16818e06c0ce968a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="article:published_time" content="2020-03-22T12:34:47.000Z">
-<meta property="article:modified_time" content="2020-03-22T13:17:25.000Z">
+<meta property="article:published_time" content="2020-03-21T16:59:49.000Z">
+<meta property="article:modified_time" content="2020-05-23T17:15:44.000Z">
 <meta property="article:author" content="yidier">
+<meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16818b1c01ca7df3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 
@@ -105,7 +106,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/archives/',
     scheme: 'Muse',
     version: '5.1.4',
     sidebar: {"display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -128,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://yidierh.github.io/2020/03/22/前端之JS的线程(最易懂)/"/>
+  <link rel="canonical" href="https://yidierh.github.io/archives/2020/03/22/前端线程理解/"/>
 
 
 
 
 
-  <title>前端之JS的线程(最易懂) | yidier's blogs</title>
+  <title>前端线程理解 | yidier's blogs</title>
   
 
 
@@ -160,7 +161,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/archives/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">yidier's blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -188,7 +189,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -197,12 +198,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/archives/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/archives/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
           </a>
         </li>
       
@@ -239,12 +260,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E4%B9%8BJS%E7%9A%84%E7%BA%BF%E7%A8%8B(%E6%9C%80%E6%98%93%E6%87%82)/">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/archives/archives/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yidier">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/archives/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -256,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端之JS的线程(最易懂)</h1>
+          <h1 class="post-title" itemprop="name headline">前端线程理解</h1>
         
 
         <div class="post-meta">
@@ -268,7 +289,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-22T20:34:47+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-22T00:59:49+08:00">
                 2020-03-22
               </time>
             
@@ -278,6 +299,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/archives/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -335,7 +378,7 @@
 <p>类别B：JS 引擎线程</p>
 <p>类别C：EventLoop轮询处理线程</p>
 <p>类别D：其他线程，有 定时器触发线程 (setTimeout)、http 异步线程、浏览器事件线程 (onclick)等等。</p>
-<p><strong>注意：</strong>  类别A和类别B是互斥的，原因不用说了，不知道的看我上一篇文章。所以我们下面的讨论，就不涉及类别A了，只讨论类别B、C、D之间的关系。</p>
+<p><strong>注意：</strong> 类别A和类别B是互斥的，原因不用说了，不知道的看我上一篇文章。所以我们下面的讨论，就不涉及类别A了，只讨论类别B、C、D之间的关系。</p>
 <h4 id="类别B："><a href="#类别B：" class="headerlink" title="类别B："></a>类别B：</h4><p>JS 引擎线程，我们把它称为<strong>主线程</strong>，它是干嘛的？即运行JS代码的那个线程（不包括异步的那些代码），比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 var a &#x3D; 2;</span><br><span class="line">2 setTimeout()</span><br><span class="line">3 ajax()</span><br><span class="line">4 console.log()</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
@@ -350,7 +393,7 @@
 <p>主线程在运行这段代码时，碰到2 setTimeout(fun A)，把这行代码交给<strong>定时器触发线程</strong>去执行</p>
 <p>碰到3 ajax(fun B)，把这行代码交给<strong>http 异步线程</strong>去执行</p>
 <p>碰到5 dom.onclick(func C) ，把这行代码交给<strong>浏览器事件线程</strong>去执行</p>
-<p><strong>注意：</strong>  这几个异步代码的回调函数fun A，fun B，fun C，各自的线程都会保存着的，因为需要在未来的某个时候，将回调函数交给主线程去执行啊。。。</p>
+<p><strong>注意：</strong> 这几个异步代码的回调函数fun A，fun B，fun C，各自的线程都会保存着的，因为需要在未来的某个时候，将回调函数交给主线程去执行啊。。。</p>
 <p>所以，这几个线程主要干两件事：</p>
 <ol>
 <li>执行主线程扔过来的异步代码，并执行代码</li>
@@ -414,6 +457,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/archives/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"># 浏览器</a>
+          
+        </div>
+      
 
       
       
@@ -429,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/22/%E6%B5%85%E8%B0%88Debounce%20%E4%B8%8E%20Throttle/" rel="prev" title="浅谈Debounce 与 Throttle">
-                浅谈Debounce 与 Throttle <i class="fa fa-chevron-right"></i>
+              <a href="/archives/2020/03/24/Debounce-throttle/" rel="prev" title="Debounce&Throttle">
+                Debounce&Throttle <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -498,14 +547,14 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">yidier</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">a web developer</p>
           </div>
 
           <nav class="site-state motion-element">
 
             
               <div class="site-state-item site-state-posts">
-                <a href="/archives">
+                <a href="/archives/archives">
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
@@ -513,7 +562,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/archives/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/archives/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -662,57 +729,57 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/archives/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/archives/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script type="text/javascript" src="/archives/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/archives/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/archives/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/archives/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/archives/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/archives/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/archives/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/archives/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/archives/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 

@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/archives/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,27 +48,27 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/archives/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+<link href="/archives/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/archives/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/archives/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/archives/images/favicon-16x16-next.png?v=5.1.4">
 
 
+  <link rel="mask-icon" href="/archives/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-  <meta name="keywords" content="yidier's blog" />
+
+
+  <meta name="keywords" content="Vue," />
 
 
 
@@ -82,15 +82,16 @@
 <meta name="description" content="一、工具类封装本文主要讲解基于 Vue + Vant ，实现移动端图片选择，并用 Canvas 压缩图片，最后上传至服务器。还会封装一个工具类，方便直接调用。 废话不多说先上代码，封装一个 CompressImageUtils 工具类： 123456789101112131415161718192021222324252627282930313233343536373839404142434445">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue 图片压缩并上传至服务器">
-<meta property="og:url" content="https://yidierh.github.io/2020/04/08/2020-04-08/index.html">
+<meta property="og:url" content="https://yidierh.github.io/archives/2020/04/08/2020-04-08/index.html">
 <meta property="og:site_name" content="yidier&#39;s blogs">
 <meta property="og:description" content="一、工具类封装本文主要讲解基于 Vue + Vant ，实现移动端图片选择，并用 Canvas 压缩图片，最后上传至服务器。还会封装一个工具类，方便直接调用。 废话不多说先上代码，封装一个 CompressImageUtils 工具类： 123456789101112131415161718192021222324252627282930313233343536373839404142434445">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/1.jpg">
 <meta property="og:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/2.jpg">
 <meta property="article:published_time" content="2020-04-08T11:49:33.000Z">
-<meta property="article:modified_time" content="2020-04-08T12:05:28.000Z">
+<meta property="article:modified_time" content="2020-05-23T17:15:36.000Z">
 <meta property="article:author" content="yidier">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/1.jpg">
 
@@ -99,7 +100,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/archives/',
     scheme: 'Muse',
     version: '5.1.4',
     sidebar: {"display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -122,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="https://yidierh.github.io/2020/04/08/2020-04-08/"/>
+  <link rel="canonical" href="https://yidierh.github.io/archives/2020/04/08/2020-04-08/"/>
 
 
 
@@ -154,7 +155,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/archives/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">yidier's blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -182,7 +183,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -191,12 +192,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/archives/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/archives/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
           </a>
         </li>
       
@@ -233,12 +254,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/04/08/2020-04-08/">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/archives/archives/2020/04/08/2020-04-08/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yidier">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/archives/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -272,6 +293,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/archives/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -309,7 +352,7 @@
 <p><code>compressImage</code> 方法返回的是 blob 值，根据服务端接口需要可以改为返回 base64，只需将 <code>resolve(blob)</code> 改为 <code>resolve(base64)</code> 即可。</p>
 <p>注意一点，对于有些宽高没到 500，且分辨率很小的图片，压缩之后可能比之前还大。猜测可能是 canvas 生成的图片分辨率要比原来高一些，所以最终的图片比压缩前更大。可以在调用的地方加个判断，如果压缩完的大小比原图小，就上传压缩后的图片；如果如果压缩完的大小比原图大，就上传原图。</p>
 <h2 id="二、如何使用"><a href="#二、如何使用" class="headerlink" title="二、如何使用"></a>二、如何使用</h2><p>将 <code>CompressImageUtils</code> 引入到目标文件，然后调用 <code>compressImage</code> 方法，即可在回调里获得压缩后的结果。注意 <code>compressImage</code> 方法返回的是 Promise。<br>省略其他无关代码，只保留跟压缩图片和上传相关的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;van-uploader v-model=<span class="string">"fileList"</span> :after-read=<span class="string">"afterRead"</span> /&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> &#123;compressImage&#125; <span class="keyword">from</span> <span class="string">'../../utils/CompressImageUtils'</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    components: &#123;&#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      </span><br><span class="line">     <span class="comment">//读取完图片后</span></span><br><span class="line">      afterRead(file) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'afterRead------'</span>, file);</span><br><span class="line">        <span class="keyword">this</span>._compressAndUploadFile(file);</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">//压缩图片上传</span></span><br><span class="line">      _compressAndUploadFile(file) &#123;</span><br><span class="line">        compressImage(file.content).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩后的结果'</span>, result); <span class="comment">// result即为压缩后的结果</span></span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩前大小'</span>, file.file.size);</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩后大小'</span>, result.size);</span><br><span class="line">          <span class="keyword">if</span> (result.size &gt; file.file.size)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'上传原图'</span>);</span><br><span class="line">            <span class="comment">//压缩后比原来更大，则将原图上传</span></span><br><span class="line">            <span class="keyword">this</span>._uploadFile(file.file, file.file.name);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//压缩后比原来小，上传压缩后的</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'上传压缩图'</span>);</span><br><span class="line">            <span class="keyword">this</span>._uploadFile(result, file.file.name)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">//上传图片</span></span><br><span class="line">      _uploadFile(file, filename) &#123;</span><br><span class="line">        <span class="keyword">let</span> params = <span class="keyword">new</span> FormData();</span><br><span class="line">        params.append(<span class="string">"file"</span>, file, filename);</span><br><span class="line">        <span class="keyword">this</span>.$api.uploadImage(params).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'uploadImage'</span>, res);</span><br><span class="line">					<span class="comment">//上传成功，写自己的逻辑</span></span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;, </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;van-uploader v-model=<span class="string">"fileList"</span> :after-read=<span class="string">"afterRead"</span> /&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> &#123;compressImage&#125; <span class="keyword">from</span> <span class="string">'../../utils/CompressImageUtils'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    components: &#123;&#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line"></span><br><span class="line">     <span class="comment">//读取完图片后</span></span><br><span class="line">      afterRead(file) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'afterRead------'</span>, file);</span><br><span class="line">        <span class="keyword">this</span>._compressAndUploadFile(file);</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">//压缩图片上传</span></span><br><span class="line">      _compressAndUploadFile(file) &#123;</span><br><span class="line">        compressImage(file.content).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩后的结果'</span>, result); <span class="comment">// result即为压缩后的结果</span></span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩前大小'</span>, file.file.size);</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'压缩后大小'</span>, result.size);</span><br><span class="line">          <span class="keyword">if</span> (result.size &gt; file.file.size)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'上传原图'</span>);</span><br><span class="line">            <span class="comment">//压缩后比原来更大，则将原图上传</span></span><br><span class="line">            <span class="keyword">this</span>._uploadFile(file.file, file.file.name);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//压缩后比原来小，上传压缩后的</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'上传压缩图'</span>);</span><br><span class="line">            <span class="keyword">this</span>._uploadFile(result, file.file.name)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">//上传图片</span></span><br><span class="line">      _uploadFile(file, filename) &#123;</span><br><span class="line">        <span class="keyword">let</span> params = <span class="keyword">new</span> FormData();</span><br><span class="line">        params.append(<span class="string">"file"</span>, file, filename);</span><br><span class="line">        <span class="keyword">this</span>.$api.uploadImage(params).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'uploadImage'</span>, res);</span><br><span class="line">                    <span class="comment">//上传成功，写自己的逻辑</span></span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;, </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>在返回结果中加了层判断，压缩后比原来更大，则将原图上传；压缩后比原来小，上传压缩后的。解决压缩后比原图更大的情况。<br><code>this.$api.uploadImage(params)</code> 是调用封装的 api 方法，如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传图片</span></span><br><span class="line">uploadImage(params)&#123;</span><br><span class="line">   <span class="keyword">return</span> axios.post(<span class="string">`<span class="subst">$&#123;base&#125;</span>/api/v1/file`</span>, params, &#123;</span><br><span class="line">     headers: &#123;<span class="string">'content-type'</span>: <span class="string">'multipart/form-data'</span>&#125;</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -335,6 +378,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/archives/tags/Vue/" rel="tag"># Vue</a>
+          
+        </div>
+      
 
       
       
@@ -344,7 +393,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" rel="next" title="Taro 小程序云开发实战">
+              <a href="/archives/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" rel="next" title="Taro 小程序云开发实战">
                 <i class="fa fa-chevron-left"></i> Taro 小程序云开发实战
               </a>
             
@@ -354,7 +403,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/05/02/ES6%EF%BC%88Generator%EF%BC%89/" rel="prev" title="ES6（Generator）">
+              <a href="/archives/2020/05/02/ES6%EF%BC%88Generator%EF%BC%89/" rel="prev" title="ES6（Generator）">
                 ES6（Generator） <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -423,14 +472,14 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">yidier</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">a web developer</p>
           </div>
 
           <nav class="site-state motion-element">
 
             
               <div class="site-state-item site-state-posts">
-                <a href="/archives">
+                <a href="/archives/archives">
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
@@ -438,7 +487,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/archives/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/archives/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -587,57 +654,57 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/archives/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/archives/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script type="text/javascript" src="/archives/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/archives/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/archives/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/archives/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/archives/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/archives/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/archives/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/archives/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/archives/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
