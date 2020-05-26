@@ -86,14 +86,14 @@
 <meta property="og:site_name" content="yidier&#39;s blogs">
 <meta property="og:description" content="一、工具类封装本文主要讲解基于 Vue + Vant ，实现移动端图片选择，并用 Canvas 压缩图片，最后上传至服务器。还会封装一个工具类，方便直接调用。 废话不多说先上代码，封装一个 CompressImageUtils 工具类： 123456789101112131415161718192021222324252627282930313233343536373839404142434445">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/2020-04-08/1.jpg">
-<meta property="og:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/2020-04-08/2.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/1.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/2.jpg">
 <meta property="article:published_time" content="2020-04-08T11:49:33.000Z">
 <meta property="article:modified_time" content="2020-05-23T17:15:36.000Z">
 <meta property="article:author" content="yidier">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/2020-04-08/1.jpg">
+<meta name="twitter:image" content="https://yidierh.github.io/2020/04/08/2020-04-08/1.jpg">
 
 
 
@@ -368,9 +368,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传图片</span></span><br><span class="line">uploadImage(params)&#123;</span><br><span class="line">   <span class="keyword">return</span> axios.post(<span class="string">`<span class="subst">$&#123;base&#125;</span>/api/v1/file`</span>, params, &#123;</span><br><span class="line">     headers: &#123;<span class="string">'content-type'</span>: <span class="string">'multipart/form-data'</span>&#125;</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、使用效果"><a href="#三、使用效果" class="headerlink" title="三、使用效果"></a>三、使用效果</h2><p>先上传一个非常大的，尺寸为 6016 × 4016，16.8M 的大图，看输出日志，压缩后大小仅为 260k 左右。此时判断压缩后比压缩前小，上传压缩图到服务器。</p>
-<p><img src="2020-04-08/1.jpg" alt=""></p>
+<p><img src="/2020/04/08/2020-04-08/1.jpg" alt></p>
 <p>再看个尺寸 300 × 300，12k 的小图，压缩前大小是 11252，压缩后大小是 93656，大了很多。此时判断压缩后比压缩前更大，上传的是原图。</p>
-<p><img src="2020-04-08/2.jpg" alt=""></p>
+<p><img src="/2020/04/08/2020-04-08/2.jpg" alt></p>
 <p>总结：这个工具类对大图的压缩效果很明显，不管多大的图，压缩之后基本不会超过 300k。但对某些小图可能出现压缩完反而更大的情况。在调用的地方加层压缩后和压缩前大小的比较判断，会完美解决这个问题。<br>当然也可以在工具类内部判断，但个人觉得跟业务逻辑相关的代码还是不要放在公用的工具类比较好。</p>
 <p><a href="https://juejin.im/post/5e1e8129e51d453cee48cd8b" target="_blank" rel="noopener">原文链接</a></p>
 

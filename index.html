@@ -352,9 +352,9 @@
       
         
           
-            <p><img src="./20200521/1.jpg" alt=""></p>
-<p><img src="./20200521/2.jpg" alt=""></p>
-<p><img src="./20200521/3.jpg" alt=""></p>
+            <p><img src="/2020/05/21/20200521/1.jpg" alt></p>
+<p><img src="/2020/05/21/20200521/2.jpg" alt></p>
+<p><img src="/2020/05/21/20200521/3.jpg" alt></p>
 <blockquote>
 <p>Happay birthday to 一亿.</p>
 </blockquote>
@@ -499,7 +499,7 @@
       
         
           
-            <p><img src="./2020-5-13/1.jpg" alt=""></p>
+            <p><img src="/2020/05/13/2020-5-13/1.jpg" alt></p>
 
           
         
@@ -855,9 +855,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传图片</span></span><br><span class="line">uploadImage(params)&#123;</span><br><span class="line">   <span class="keyword">return</span> axios.post(<span class="string">`<span class="subst">$&#123;base&#125;</span>/api/v1/file`</span>, params, &#123;</span><br><span class="line">     headers: &#123;<span class="string">'content-type'</span>: <span class="string">'multipart/form-data'</span>&#125;</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、使用效果"><a href="#三、使用效果" class="headerlink" title="三、使用效果"></a>三、使用效果</h2><p>先上传一个非常大的，尺寸为 6016 × 4016，16.8M 的大图，看输出日志，压缩后大小仅为 260k 左右。此时判断压缩后比压缩前小，上传压缩图到服务器。</p>
-<p><img src="2020-04-08/1.jpg" alt=""></p>
+<p><img src="/2020/04/08/2020-04-08/1.jpg" alt></p>
 <p>再看个尺寸 300 × 300，12k 的小图，压缩前大小是 11252，压缩后大小是 93656，大了很多。此时判断压缩后比压缩前更大，上传的是原图。</p>
-<p><img src="2020-04-08/2.jpg" alt=""></p>
+<p><img src="/2020/04/08/2020-04-08/2.jpg" alt></p>
 <p>总结：这个工具类对大图的压缩效果很明显，不管多大的图，压缩之后基本不会超过 300k。但对某些小图可能出现压缩完反而更大的情况。在调用的地方加层压缩后和压缩前大小的比较判断，会完美解决这个问题。<br>当然也可以在工具类内部判断，但个人觉得跟业务逻辑相关的代码还是不要放在公用的工具类比较好。</p>
 <p><a href="https://juejin.im/post/5e1e8129e51d453cee48cd8b" target="_blank" rel="noopener">原文链接</a></p>
 
@@ -1016,7 +1016,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx @tarojs&#x2F;cli init myApp</span><br></pre></td></tr></table></figure>
 
 <p>选择wxcloud / 小程序云开发模板</p>
-<p><img src="Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/1.jpg" alt=""></p>
+<p><img src="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/1.jpg" alt></p>
 <p>模板目录结构</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">├── client                                  小程序端目录</span><br><span class="line">│   ├── config                              配置目录</span><br><span class="line">│   │   ├── dev.js                          开发时配置</span><br><span class="line">│   │   ├── index.js                        默认配置</span><br><span class="line">│   │   └── prod.js                         打包时配置</span><br><span class="line">│   ├── dist                                编译结果目录</span><br><span class="line">│   ├── package.json</span><br><span class="line">│   ├── src                                 源码目录</span><br><span class="line">│   │   ├── app.scss                        项目总通用样式</span><br><span class="line">│   │   ├── app.js                          项目入口文件</span><br><span class="line">│   │   ├── components                      组件文件目录</span><br><span class="line">│   │   │   └── login                       login 组件目录</span><br><span class="line">│   │   │       └── index.weapp.js          login 组件逻辑</span><br><span class="line">│   │   └── pages                           页面文件目录</span><br><span class="line">│   │       └── index                       index 页面目录</span><br><span class="line">│   │           ├── index.scss              index 页面逻辑</span><br><span class="line">│   │           └── index.js                index 页面样式</span><br><span class="line">├── cloud                                   服务端目录</span><br><span class="line">│   └── functions                           云函数目录</span><br><span class="line">│       └── login                           login 云函数</span><br><span class="line">│           ├── index.js                    login 函数逻辑</span><br><span class="line">│           └── package.json</span><br><span class="line">└── project.config.json                     小程序项目配置</span><br></pre></td></tr></table></figure>
 
@@ -1044,9 +1044,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"triggers"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"timeTrigger"</span>,</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"timer"</span>,</span><br><span class="line">      <span class="string">"config"</span>: <span class="string">"0 0 9 * * * *"</span> <span class="comment">// 每天早上 9 点触发</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="订阅消息"><a href="#订阅消息" class="headerlink" title="订阅消息"></a>订阅消息</h4><h6 id="步骤一：小程序添加消息模板"><a href="#步骤一：小程序添加消息模板" class="headerlink" title="步骤一：小程序添加消息模板"></a>步骤一：小程序添加消息模板</h6><p>没开通的要先在微信公众平台开通订阅消息功能</p>
-<p><img src="Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2.jpg" alt=""></p>
-<p><img src="Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/3.jpg" alt=""></p>
-<h6 id="步骤二：获取模板ID"><a href="#步骤二：获取模板ID" class="headerlink" title="步骤二：获取模板ID"></a>步骤二：获取模板ID</h6><p><img src="Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/4.jpg" alt=""></p>
+<p><img src="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2.jpg" alt></p>
+<p><img src="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/3.jpg" alt></p>
+<h6 id="步骤二：获取模板ID"><a href="#步骤二：获取模板ID" class="headerlink" title="步骤二：获取模板ID"></a>步骤二：获取模板ID</h6><p><img src="/2020/04/07/Taro-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/4.jpg" alt></p>
 <h6 id="步骤三：获取下发权限-wx-requestSubscribeMessage"><a href="#步骤三：获取下发权限-wx-requestSubscribeMessage" class="headerlink" title="步骤三：获取下发权限 wx.requestSubscribeMessage"></a>步骤三：获取下发权限 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html" target="_blank" rel="noopener">wx.requestSubscribeMessage</a></h6><h6 id="步骤四：调用接口下发订阅消息-subscribeMessage-send"><a href="#步骤四：调用接口下发订阅消息-subscribeMessage-send" class="headerlink" title="步骤四：调用接口下发订阅消息 subscribeMessage.send"></a>步骤四：调用接口下发订阅消息 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html" target="_blank" rel="noopener">subscribeMessage.send</a></h6><blockquote>
 <p>云调用需在  <code>config.json</code>  中配置  <code>subscribeMessage.send</code>  API 的权限，<a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/openapi/openapi.html#usage-3" target="_blank" rel="noopener">详情</a></p>
 </blockquote>
@@ -1197,7 +1197,7 @@
       
         
           
-            <p><img src="%E8%BD%AC%E5%8F%91%E6%88%BF%E4%BA%A7%E6%96%87%E7%AB%A0/IMG_9003.PNG" alt="1"></p>
+            <p><img src="/2020/04/06/%E8%BD%AC%E5%8F%91%E6%88%BF%E4%BA%A7%E6%96%87%E7%AB%A0/IMG_9003.PNG" alt="1"></p>
 
           
         
@@ -1585,7 +1585,7 @@
 <p>在一开始，消息队列是空的，在2秒后，一个 () =&gt; { console.log(1) } 的函数进入队列，在3秒后，一个 () =&gt; { console.log(2) }的函数进入队列，此时队列里有两个元素，主线程从队列头中挨个取出并执行。</p>
 <p>到这里我们就知道了，这3个东西大概的作用、关系和流程，但是，它们3个互相怎么交流的？这需要一个中介去专门去沟通它们3个，而这个中介，就是<strong>EventLoop轮询处理线程</strong></p>
 <p>既然叫轮询了，那么肯定是不断的循环的去交流和沟通</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818b1c01ca7df3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818b1c01ca7df3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
 <p>图画的有点丑，但是大概是这个意思，从主线程那里顺时针的看。</p>
 <p>注意整个的流程是循环往复的。</p>
 <p>注意只有主线程的同步代码都执行完了，才会去队列里看看还有啥要执行的没</p>
@@ -1601,19 +1601,19 @@
 </ul>
 <h2 id="4-总体实例"><a href="#4-总体实例" class="headerlink" title="4. 总体实例"></a>4. 总体实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 111;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(222)</span><br><span class="line">&#125;, 2000)</span><br><span class="line"></span><br><span class="line">fetch(url)  &#x2F;&#x2F; 假设该http请求花了3秒钟</span><br><span class="line">.then(function() &#123;</span><br><span class="line">    console.log(333)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">dom.onclick &#x3D; function() &#123;  &#x2F;&#x2F; 假设用户在4秒钟时点击了dom</span><br><span class="line">    console.log(444)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log(555)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 结果</span><br><span class="line">555</span><br><span class="line">222</span><br><span class="line">333</span><br><span class="line">444</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
-<h4 id="步骤1："><a href="#步骤1：" class="headerlink" title="步骤1："></a>步骤1：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7332de955ca?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<h4 id="步骤1："><a href="#步骤1：" class="headerlink" title="步骤1："></a>步骤1：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7332de955ca?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
 <p>主线程只执行了var a = 111;和console.log(555)两行代码，其他的代码分别交给了其他三个线程，因为其他线程需要2、3、4秒钟才成功并回调，所以在2秒之前，主线程一直在空闲，不断的探查队列是否不为空。</p>
 <p>此时主线程里其实已经是空的了（因为执行完那两行代码了）</p>
 <h4 id="步骤2："><a href="#步骤2：" class="headerlink" title="步骤2："></a>步骤2：</h4><p>2秒钟之后，setTimeout成功了</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7034ad6ad14?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
-<h4 id="步骤3："><a href="#步骤3：" class="headerlink" title="步骤3："></a>步骤3：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b77b0839fc10?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
-<h4 id="步骤4："><a href="#步骤4：" class="headerlink" title="步骤4："></a>步骤4：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7a5e48665e4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7034ad6ad14?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<h4 id="步骤3："><a href="#步骤3：" class="headerlink" title="步骤3："></a>步骤3：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b77b0839fc10?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<h4 id="步骤4："><a href="#步骤4：" class="headerlink" title="步骤4："></a>步骤4：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7a5e48665e4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>图里的队列里都只有一个回调函数，实际上有很多个回调函数，如果主线程里执行的代码复杂需要很长时间，这时队列里的函数们就排着，等着主线程啥时执行完，再来队列里取</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7da0f89d552?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7da0f89d552?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
 <p>所以从这里能看出来，对于setTimeout，setInterval的定时，不一定完全按照设想的时间的，因为主线程里的代码可能复杂到执行很久，所以会发生你定时3秒后执行，实际上是3.5秒后执行（主线程花费了0.5秒）</p>
 <p>之后我会再写如何解决定时误差的内容。。。</p>
-<h3 id="借两个经典的图"><a href="#借两个经典的图" class="headerlink" title="借两个经典的图"></a>借两个经典的图</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818e049fd1a479?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818e06c0ce968a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<h3 id="借两个经典的图"><a href="#借两个经典的图" class="headerlink" title="借两个经典的图"></a>借两个经典的图</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818e049fd1a479?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818e06c0ce968a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
 <p><a href="https://juejin.im/post/5c2ec3b66fb9a049eb3c1012" target="_blank" rel="noopener">原文地址</a></p>
 
           
