@@ -86,20 +86,23 @@
 <meta property="og:site_name" content="yidier&#39;s blogs">
 <meta property="og:description" content="1. 前言很多文章在介绍线程以及线程之间的关系，都存在着脱节的现象。还有的文章过于广大，涉及到了内核，本文希望以通俗易懂的话去描述晦涩的词语，可能会和实际有一丢丢的出入，但是更易理解。 我们都知道JS是单线程的，即js的代码只能在一个线程上运行，也就说，js同时只能执行一个js任务，但是为什么要这样呢？这与浏览器的用途有关，JS的主要用途是与用户互动和操作DOM。设想一段JS代码，分发到两个并行互">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16818b1c01ca7df3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/8/1682b7332de955ca?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/8/1682b7034ad6ad14?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/8/1682b77b0839fc10?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/8/1682b7a5e48665e4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/8/1682b7da0f89d552?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16818e049fd1a479?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16818e06c0ce968a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/1.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/2.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/3.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/4.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/5.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/6.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/7.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/8.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/9.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/10.jpg">
+<meta property="og:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/11.jpg">
 <meta property="article:published_time" content="2020-03-21T16:59:49.000Z">
-<meta property="article:modified_time" content="2020-05-23T17:17:34.000Z">
+<meta property="article:modified_time" content="2020-05-27T14:02:40.000Z">
 <meta property="article:author" content="yidier">
 <meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16818b1c01ca7df3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta name="twitter:image" content="https://yidierh.github.io/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/1.jpg">
 
 
 
@@ -361,7 +364,6 @@
       
         <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>很多文章在介绍线程以及线程之间的关系，都存在着脱节的现象。还有的文章过于广大，涉及到了内核，本文希望以通俗易懂的话去描述晦涩的词语，可能会和实际有一丢丢的出入，但是更易理解。</p>
 <p>我们都知道JS是单线程的，即js的代码只能在一个线程上运行，也就说，js同时只能执行一个js任务，但是为什么要这样呢？这与浏览器的用途有关，JS的主要用途是与用户互动和操作DOM。设想一段JS代码，分发到两个并行互不相关的线程上运行，一个线程在DOM上添加内容，另一个线程在删除DOM，那么会发生什么？以哪个为准？所以为了避免复杂性，JS从一开始就是单线程的，以后也不会变。</p>
-<p>这里我们已经知道了，一段JS代码只能在一个线程从上到下的执行，但是我们遇到setTimeout或者ajax异步时，也没有等待啊，往下看。</p>
 <h2 id="2-浏览器"><a href="#2-浏览器" class="headerlink" title="2. 浏览器"></a>2. 浏览器</h2><p>既然JS是单线程的，那么诸如onclick回调，setTimeout，Ajax这些都是怎么实现的呢？是因为浏览器或node（宿主环境）是多线程的，即浏览器搞了几个其他线程去辅助JS线程的运行。</p>
 <p>浏览器有很多线程，例如：</p>
 <ol>
@@ -419,10 +421,10 @@
 <p>这里再对消息队列说一下，其作用就是存放着未来要执行的回调函数，比如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">&#125;, 2000)</span><br><span class="line">setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">    console.log(2)</span><br><span class="line">&#125;, 3000)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
-<p>在一开始，消息队列是空的，在2秒后，一个 () =&gt; { console.log(1) } 的函数进入队列，在3秒后，一个 () =&gt; { console.log(2) }的函数进入队列，此时队列里有两个元素，主线程从队列头中挨个取出并执行。</p>
+<p>在一开始，消息队列是空的，在2秒后，一个 () =&gt; {<br>console.log(1)<br>} 的函数进入队列，在3秒后，一个 () =&gt; {<br>console.log(2)<br>}的函数进入队列，此时队列里有两个元素，主线程从队列头中挨个取出并执行。</p>
 <p>到这里我们就知道了，这3个东西大概的作用、关系和流程，但是，它们3个互相怎么交流的？这需要一个中介去专门去沟通它们3个，而这个中介，就是<strong>EventLoop轮询处理线程</strong></p>
 <p>既然叫轮询了，那么肯定是不断的循环的去交流和沟通</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818b1c01ca7df3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/1.jpg" alt></p>
 <p>图画的有点丑，但是大概是这个意思，从主线程那里顺时针的看。</p>
 <p>注意整个的流程是循环往复的。</p>
 <p>注意只有主线程的同步代码都执行完了，才会去队列里看看还有啥要执行的没</p>
@@ -438,20 +440,49 @@
 </ul>
 <h2 id="4-总体实例"><a href="#4-总体实例" class="headerlink" title="4. 总体实例"></a>4. 总体实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 111;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(222)</span><br><span class="line">&#125;, 2000)</span><br><span class="line"></span><br><span class="line">fetch(url)  &#x2F;&#x2F; 假设该http请求花了3秒钟</span><br><span class="line">.then(function() &#123;</span><br><span class="line">    console.log(333)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">dom.onclick &#x3D; function() &#123;  &#x2F;&#x2F; 假设用户在4秒钟时点击了dom</span><br><span class="line">    console.log(444)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log(555)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 结果</span><br><span class="line">555</span><br><span class="line">222</span><br><span class="line">333</span><br><span class="line">444</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
-<h4 id="步骤1："><a href="#步骤1：" class="headerlink" title="步骤1："></a>步骤1：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7332de955ca?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<h4 id="步骤1："><a href="#步骤1：" class="headerlink" title="步骤1："></a>步骤1：</h4><p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/2.jpg" alt></p>
 <p>主线程只执行了var a = 111;和console.log(555)两行代码，其他的代码分别交给了其他三个线程，因为其他线程需要2、3、4秒钟才成功并回调，所以在2秒之前，主线程一直在空闲，不断的探查队列是否不为空。</p>
 <p>此时主线程里其实已经是空的了（因为执行完那两行代码了）</p>
 <h4 id="步骤2："><a href="#步骤2：" class="headerlink" title="步骤2："></a>步骤2：</h4><p>2秒钟之后，setTimeout成功了</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7034ad6ad14?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="步骤3："><a href="#步骤3：" class="headerlink" title="步骤3："></a>步骤3：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b77b0839fc10?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="步骤4："><a href="#步骤4：" class="headerlink" title="步骤4："></a>步骤4：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7a5e48665e4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/3.jpg" alt></p>
+<h4 id="步骤3："><a href="#步骤3：" class="headerlink" title="步骤3："></a>步骤3：</h4><p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/4.jpg" alt></p>
+<h4 id="步骤4："><a href="#步骤4：" class="headerlink" title="步骤4："></a>步骤4：</h4><p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/5.jpg" alt></p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>图里的队列里都只有一个回调函数，实际上有很多个回调函数，如果主线程里执行的代码复杂需要很长时间，这时队列里的函数们就排着，等着主线程啥时执行完，再来队列里取</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7da0f89d552?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/6.jpg" alt></p>
 <p>所以从这里能看出来，对于setTimeout，setInterval的定时，不一定完全按照设想的时间的，因为主线程里的代码可能复杂到执行很久，所以会发生你定时3秒后执行，实际上是3.5秒后执行（主线程花费了0.5秒）</p>
 <p>之后我会再写如何解决定时误差的内容。。。</p>
-<h3 id="借两个经典的图"><a href="#借两个经典的图" class="headerlink" title="借两个经典的图"></a>借两个经典的图</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818e049fd1a479?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818e06c0ce968a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p><a href="https://juejin.im/post/5c2ec3b66fb9a049eb3c1012" target="_blank" rel="noopener">原文地址</a></p>
+<h3 id="借两个经典的图"><a href="#借两个经典的图" class="headerlink" title="借两个经典的图"></a>借两个经典的图</h3><p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/7.jpg" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/8.jpg" alt></p>
+<h3 id="setTimeout、setInterval"><a href="#setTimeout、setInterval" class="headerlink" title="setTimeout、setInterval"></a>setTimeout、setInterval</h3><p>关于这两个的延迟和解决办法，看这篇文章，也是<strong>经常考</strong>的一个知识点！！！</p>
+<p><a href="http://caibaojian.com/setinterval.html" target="_blank" rel="noopener">关于setInterval()你所不知道的地方</a></p>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>如上就是广义的事件循环机制，接下来我们再深入细化一下</p>
+<p>上面的任务消息队列，可以再细分为两种：</p>
+<p><strong>宏任务：</strong></p>
+<ul>
+<li>setTimeout，setInterval，setImmediate，requestAnimationFrame</li>
+<li>UI交互事件</li>
+<li>网络请求等等</li>
+</ul>
+<p>注意：一个setTimeout就相当于一个宏任务，所以队列里一堆回调函数都可以改叫为一个一个的任务</p>
+<p><strong>微任务：</strong></p>
+<ul>
+<li>Promise.then</li>
+<li>process.nextTick(Node.js 环境)</li>
+</ul>
+<p>注意：new Promise执行本身时是属于同步代码，只有.then才是微任务</p>
+<h3 id="广义轮询"><a href="#广义轮询" class="headerlink" title="广义轮询"></a>广义轮询</h3><p>所以我们之前所讲的，其流程应为：</p>
+<p>执行同步代码 ==&gt; 去宏任务队列里 ==&gt; 执行宏任务1 ==&gt; 执行宏任务2 …</p>
+<h3 id="微任务"><a href="#微任务" class="headerlink" title="微任务"></a>微任务</h3><p>加入微任务后，流程变为</p>
+<p>执行同步代码 ==&gt; <strong>检查微任务并执行</strong> ==&gt; 执行宏任务1 ==&gt; <strong>检查微任务并执行</strong> ==&gt; 执行宏任务2 ==&gt; <strong>检查微任务并执行</strong> ==&gt; 执行宏任务3 ……</p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/9.jpg" alt></p>
+<p>也就是说，之前说的所有异步都放进一个任务消息队列里，现在也就是分为两个任务队列了，比较容易理解。</p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/10.jpg" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/11.jpg" alt></p>
+<p>面试题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#39;1&#39;);</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&#39;2&#39;);</span><br><span class="line">    process.nextTick(function() &#123;</span><br><span class="line">        console.log(&#39;3&#39;);</span><br><span class="line">    &#125;)</span><br><span class="line">    new Promise(function(resolve) &#123;</span><br><span class="line">        console.log(&#39;4&#39;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function() &#123;</span><br><span class="line">        console.log(&#39;5&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">process.nextTick(function() &#123;</span><br><span class="line">    console.log(&#39;6&#39;);</span><br><span class="line">&#125;)</span><br><span class="line">new Promise(function(resolve) &#123;</span><br><span class="line">    console.log(&#39;7&#39;);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">    console.log(&#39;8&#39;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&#39;9&#39;);</span><br><span class="line">    process.nextTick(function() &#123;</span><br><span class="line">        console.log(&#39;10&#39;);</span><br><span class="line">    &#125;)</span><br><span class="line">    new Promise(function(resolve) &#123;</span><br><span class="line">        console.log(&#39;11&#39;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function() &#123;</span><br><span class="line">        console.log(&#39;12&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 执行结果为1,7,6,8,2,4,3,5,9,11,10,12</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>只要记住，每次执行完一个宏任务后都要去检查微任务就可以了。</p>
+<p><a href="https://juejin.im/post/5c2ec3b66fb9a049eb3c1012" target="_blank" rel="noopener">原文链接</a></p>
 
       
     </div>
@@ -565,7 +596,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -587,7 +618,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -642,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前言"><span class="nav-number">1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-浏览器"><span class="nav-number">2.</span> <span class="nav-text">2. 浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-线程与进程"><span class="nav-number">3.</span> <span class="nav-text">3. 线程与进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类别B："><span class="nav-number">3.0.1.</span> <span class="nav-text">类别B：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息队列（任务队列）"><span class="nav-number">3.0.2.</span> <span class="nav-text">消息队列（任务队列）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类别D："><span class="nav-number">3.0.3.</span> <span class="nav-text">类别D：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类别C："><span class="nav-number">3.0.4.</span> <span class="nav-text">类别C：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小区别"><span class="nav-number">3.0.5.</span> <span class="nav-text">小区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-总体实例"><span class="nav-number">4.</span> <span class="nav-text">4. 总体实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤1："><span class="nav-number">4.0.1.</span> <span class="nav-text">步骤1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤2："><span class="nav-number">4.0.2.</span> <span class="nav-text">步骤2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤3："><span class="nav-number">4.0.3.</span> <span class="nav-text">步骤3：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤4："><span class="nav-number">4.0.4.</span> <span class="nav-text">步骤4：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">4.1.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#借两个经典的图"><span class="nav-number">4.2.</span> <span class="nav-text">借两个经典的图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前言"><span class="nav-number">1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-浏览器"><span class="nav-number">2.</span> <span class="nav-text">2. 浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-线程与进程"><span class="nav-number">3.</span> <span class="nav-text">3. 线程与进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类别B："><span class="nav-number">3.0.1.</span> <span class="nav-text">类别B：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息队列（任务队列）"><span class="nav-number">3.0.2.</span> <span class="nav-text">消息队列（任务队列）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类别D："><span class="nav-number">3.0.3.</span> <span class="nav-text">类别D：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类别C："><span class="nav-number">3.0.4.</span> <span class="nav-text">类别C：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小区别"><span class="nav-number">3.0.5.</span> <span class="nav-text">小区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-总体实例"><span class="nav-number">4.</span> <span class="nav-text">4. 总体实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤1："><span class="nav-number">4.0.1.</span> <span class="nav-text">步骤1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤2："><span class="nav-number">4.0.2.</span> <span class="nav-text">步骤2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤3："><span class="nav-number">4.0.3.</span> <span class="nav-text">步骤3：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤4："><span class="nav-number">4.0.4.</span> <span class="nav-text">步骤4：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">4.1.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#借两个经典的图"><span class="nav-number">4.2.</span> <span class="nav-text">借两个经典的图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeout、setInterval"><span class="nav-number">4.3.</span> <span class="nav-text">setTimeout、setInterval</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶"><span class="nav-number">5.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#广义轮询"><span class="nav-number">5.1.</span> <span class="nav-text">广义轮询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微任务"><span class="nav-number">5.2.</span> <span class="nav-text">微任务</span></a></li></ol></li></ol></div>
             
 
           </div>

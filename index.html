@@ -259,6 +259,237 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/05/27/20200527/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yidier">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yidier's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/27/20200527/" itemprop="url">BFC理解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-27T22:05:01+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="BFC-定义"><a href="#BFC-定义" class="headerlink" title="BFC 定义"></a>BFC 定义</h3><blockquote>
+<p>BFC(Block formatting context)直译为”块级格式化上下文”。它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。</p>
+</blockquote>
+<p>在解释什么是BFC之前，我们需要先知道Box、Formatting Context的概念。</p>
+<h3 id="Box：css布局的基本单位"><a href="#Box：css布局的基本单位" class="headerlink" title="Box：css布局的基本单位"></a>Box：css布局的基本单位</h3><p>Box 是 CSS 布局的对象和基本单位， 直观点来说，就是一个页面是由很多个 Box 组成的。元素的类型和 display 属性，决定了这个 Box 的类型。 不同类型的 Box， 会参与不同的 Formatting Context（一个决定如何渲染文档的容器），因此Box内的元素会以不同的方式渲染。让我们看看有哪些盒子：</p>
+<ul>
+<li><p>block-level box:display 属性为 block, list-item, table 的元素，会生成 block-level box。并且参与 block fomatting context；</p>
+</li>
+<li><p>inline-level box:display 属性为 inline, inline-block, inline-table 的元素，会生成 inline-level box。并且参与 inline formatting context；</p>
+</li>
+<li><p>run-in box: css3 中才有， 这儿先不讲了。</p>
+</li>
+</ul>
+<h3 id="Formatting-Context"><a href="#Formatting-Context" class="headerlink" title="Formatting Context"></a>Formatting Context</h3><p>Formatting context 是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。最常见的 Formatting context 有 Block fomatting context (简称BFC)和 Inline formatting context (简称IFC)。</p>
+<blockquote>
+<p>BFC是一个独立的布局环境，其中的元素布局是不受外界的影响，并且在一个BFC中，块盒与行盒（行盒由一行中所有的内联元素所组成）都会垂直的沿着其父元素的边框排列。</p>
+</blockquote>
+<h3 id="BFC的布局规则"><a href="#BFC的布局规则" class="headerlink" title="BFC的布局规则"></a>BFC的布局规则</h3><ul>
+<li><p>内部的Box会在垂直方向，一个接一个地放置。</p>
+</li>
+<li><p>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。</p>
+</li>
+<li><p>每个盒子（块盒与行盒）的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</p>
+</li>
+<li><p>BFC的区域不会与float box重叠。</p>
+</li>
+<li><p>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</p>
+</li>
+<li><p>计算BFC的高度时，浮动元素也参与计算。</p>
+</li>
+</ul>
+<p>如何创建BFC</p>
+<ul>
+<li><p>1、float的值不是none。</p>
+</li>
+<li><p>2、position的值不是static或者relative。</p>
+</li>
+<li><p>3、display的值是inline-block、table-cell、flex、table-caption或者inline-flex</p>
+</li>
+<li><p>4、overflow的值不是visible</p>
+</li>
+</ul>
+<h3 id="BFC的作用"><a href="#BFC的作用" class="headerlink" title="BFC的作用"></a>BFC的作用</h3><h4 id="1-利用BFC避免margin重叠。"><a href="#1-利用BFC避免margin重叠。" class="headerlink" title="1.利用BFC避免margin重叠。"></a>1.利用BFC避免margin重叠。</h4><p>一起来看一个例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>防止margin重叠<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    *&#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    p &#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">color</span>: <span class="selector-id">#f55</span>;</span></span><br><span class="line">        background: yellow;</span><br><span class="line">        width: 200px;</span><br><span class="line">        line-height: 100px;</span><br><span class="line"><span class="css">        <span class="selector-tag">text-align</span><span class="selector-pseudo">:center</span>;</span></span><br><span class="line">        margin: 30px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>看看我的 margin是多少<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>看看我的 margin是多少<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>页面生成的效果就是这样的：</p>
+<p><img src="/2020/05/27/20200527/1.png" alt></p>
+<p>根据第二条，属于同一个BFC的两个相邻的Box会发生margin重叠，所以我们可以设置，两个不同的BFC，也就是我们可以让把第二个p用div包起来，然后激活它使其成为一个BFC</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>防止margin重叠<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    *&#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    p &#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">color</span>: <span class="selector-id">#f55</span>;</span></span><br><span class="line">        background: yellow;</span><br><span class="line">        width: 200px;</span><br><span class="line">        line-height: 100px;</span><br><span class="line"><span class="css">        <span class="selector-tag">text-align</span><span class="selector-pseudo">:center</span>;</span></span><br><span class="line">        margin: 30px;</span><br><span class="line">    &#125;</span><br><span class="line">    div&#123;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>看看我的 margin是多少<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>看看我的 margin是多少<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/05/27/20200527/2.png" alt></p>
+<h6 id="2-自适应两栏布局"><a href="#2-自适应两栏布局" class="headerlink" title="2.自适应两栏布局"></a>2.自适应两栏布局</h6><p>根据：</p>
+<ul>
+<li>每个盒子的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    *&#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 100%;</span><br><span class="line">        position: relative;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        float: left;</span><br><span class="line">        background: rgb(139, 214, 78);</span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 150px;</span><br><span class="line">        font-size: 20px;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line">        height: 300px;</span><br><span class="line">        background: rgb(170, 54, 236);</span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 300px;</span><br><span class="line">        font-size: 40px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>LEFT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>RIGHT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>页面：</p>
+<p><img src="/2020/05/27/20200527/3.png" alt></p>
+<p>又因为：</p>
+<ul>
+<li>BFC的区域不会与float box重叠。</li>
+</ul>
+<p>所以我们让right单独成为一个BFC</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    *&#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 100%;</span><br><span class="line">        position: relative;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        float: left;</span><br><span class="line">        background: rgb(139, 214, 78);</span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 150px;</span><br><span class="line">        font-size: 20px;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line">        overflow: hidden;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background: rgb(170, 54, 236);</span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 300px;</span><br><span class="line">        font-size: 40px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>LEFT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>RIGHT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>页面：</p>
+<p><img src="/2020/05/27/20200527/4.png" alt></p>
+<p>right会自动的适应宽度，这时候就形成了一个两栏自适应的布局。</p>
+<h6 id="3-清楚浮动。"><a href="#3-清楚浮动。" class="headerlink" title="3.清楚浮动。"></a>3.清楚浮动。</h6><p>当我们不给父节点设置高度，子节点设置浮动的时候，会发生高度塌陷，这个时候我们就要清楚浮动。</p>
+<p>比如这样：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>清除浮动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.par</span> &#123;</span></span><br><span class="line">        border: 5px solid rgb(91, 243, 30);</span><br><span class="line">        width: 300px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line">        border: 5px solid rgb(233, 250, 84);</span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        height: 100px;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"par"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>页面：</p>
+<p><img src="/2020/05/27/20200527/5.png" alt></p>
+<p>这个时候我们根据最后一条：</p>
+<ul>
+<li>计算BFC的高度时，浮动元素也参与计算。</li>
+</ul>
+<p>给父节点激活BFC</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>清除浮动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.par</span> &#123;</span></span><br><span class="line">        border: 5px solid rgb(91, 243, 30);</span><br><span class="line">        width: 300px;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line">        border: 5px solid rgb(233, 250, 84);</span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        height: 100px;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"par"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>页面：</p>
+<p><img src="/2020/05/27/20200527/6.png" alt></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上例子都体现了：</p>
+<blockquote>
+<p>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</p>
+</blockquote>
+<p>因为BFC内部的元素和外部的元素绝对不会互相影响，因此， 当BFC外部存在浮动时，它不应该影响BFC内部Box的布局，BFC会通过变窄，而不与浮动有重叠。同样的，当BFC内部有浮动时，为了不影响外部元素的布局，BFC计算高度时会包括浮动的高度。避免margin重叠也是这样的一个道理。</p>
+<p><a href="https://blog.csdn.net/sinat_36422236/article/details/88763187" target="_blank" rel="noopener">原文链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yidierh.github.io/2020/05/21/20200521/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1524,7 +1755,6 @@
           
             <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>很多文章在介绍线程以及线程之间的关系，都存在着脱节的现象。还有的文章过于广大，涉及到了内核，本文希望以通俗易懂的话去描述晦涩的词语，可能会和实际有一丢丢的出入，但是更易理解。</p>
 <p>我们都知道JS是单线程的，即js的代码只能在一个线程上运行，也就说，js同时只能执行一个js任务，但是为什么要这样呢？这与浏览器的用途有关，JS的主要用途是与用户互动和操作DOM。设想一段JS代码，分发到两个并行互不相关的线程上运行，一个线程在DOM上添加内容，另一个线程在删除DOM，那么会发生什么？以哪个为准？所以为了避免复杂性，JS从一开始就是单线程的，以后也不会变。</p>
-<p>这里我们已经知道了，一段JS代码只能在一个线程从上到下的执行，但是我们遇到setTimeout或者ajax异步时，也没有等待啊，往下看。</p>
 <h2 id="2-浏览器"><a href="#2-浏览器" class="headerlink" title="2. 浏览器"></a>2. 浏览器</h2><p>既然JS是单线程的，那么诸如onclick回调，setTimeout，Ajax这些都是怎么实现的呢？是因为浏览器或node（宿主环境）是多线程的，即浏览器搞了几个其他线程去辅助JS线程的运行。</p>
 <p>浏览器有很多线程，例如：</p>
 <ol>
@@ -1582,10 +1812,10 @@
 <p>这里再对消息队列说一下，其作用就是存放着未来要执行的回调函数，比如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">&#125;, 2000)</span><br><span class="line">setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">    console.log(2)</span><br><span class="line">&#125;, 3000)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
-<p>在一开始，消息队列是空的，在2秒后，一个 () =&gt; { console.log(1) } 的函数进入队列，在3秒后，一个 () =&gt; { console.log(2) }的函数进入队列，此时队列里有两个元素，主线程从队列头中挨个取出并执行。</p>
+<p>在一开始，消息队列是空的，在2秒后，一个 () =&gt; {<br>console.log(1)<br>} 的函数进入队列，在3秒后，一个 () =&gt; {<br>console.log(2)<br>}的函数进入队列，此时队列里有两个元素，主线程从队列头中挨个取出并执行。</p>
 <p>到这里我们就知道了，这3个东西大概的作用、关系和流程，但是，它们3个互相怎么交流的？这需要一个中介去专门去沟通它们3个，而这个中介，就是<strong>EventLoop轮询处理线程</strong></p>
 <p>既然叫轮询了，那么肯定是不断的循环的去交流和沟通</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818b1c01ca7df3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/1.jpg" alt></p>
 <p>图画的有点丑，但是大概是这个意思，从主线程那里顺时针的看。</p>
 <p>注意整个的流程是循环往复的。</p>
 <p>注意只有主线程的同步代码都执行完了，才会去队列里看看还有啥要执行的没</p>
@@ -1601,20 +1831,49 @@
 </ul>
 <h2 id="4-总体实例"><a href="#4-总体实例" class="headerlink" title="4. 总体实例"></a>4. 总体实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 111;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(222)</span><br><span class="line">&#125;, 2000)</span><br><span class="line"></span><br><span class="line">fetch(url)  &#x2F;&#x2F; 假设该http请求花了3秒钟</span><br><span class="line">.then(function() &#123;</span><br><span class="line">    console.log(333)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">dom.onclick &#x3D; function() &#123;  &#x2F;&#x2F; 假设用户在4秒钟时点击了dom</span><br><span class="line">    console.log(444)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log(555)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 结果</span><br><span class="line">555</span><br><span class="line">222</span><br><span class="line">333</span><br><span class="line">444</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
-<h4 id="步骤1："><a href="#步骤1：" class="headerlink" title="步骤1："></a>步骤1：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7332de955ca?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<h4 id="步骤1："><a href="#步骤1：" class="headerlink" title="步骤1："></a>步骤1：</h4><p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/2.jpg" alt></p>
 <p>主线程只执行了var a = 111;和console.log(555)两行代码，其他的代码分别交给了其他三个线程，因为其他线程需要2、3、4秒钟才成功并回调，所以在2秒之前，主线程一直在空闲，不断的探查队列是否不为空。</p>
 <p>此时主线程里其实已经是空的了（因为执行完那两行代码了）</p>
 <h4 id="步骤2："><a href="#步骤2：" class="headerlink" title="步骤2："></a>步骤2：</h4><p>2秒钟之后，setTimeout成功了</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7034ad6ad14?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="步骤3："><a href="#步骤3：" class="headerlink" title="步骤3："></a>步骤3：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b77b0839fc10?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="步骤4："><a href="#步骤4：" class="headerlink" title="步骤4："></a>步骤4：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7a5e48665e4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/3.jpg" alt></p>
+<h4 id="步骤3："><a href="#步骤3：" class="headerlink" title="步骤3："></a>步骤3：</h4><p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/4.jpg" alt></p>
+<h4 id="步骤4："><a href="#步骤4：" class="headerlink" title="步骤4："></a>步骤4：</h4><p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/5.jpg" alt></p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>图里的队列里都只有一个回调函数，实际上有很多个回调函数，如果主线程里执行的代码复杂需要很长时间，这时队列里的函数们就排着，等着主线程啥时执行完，再来队列里取</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b7da0f89d552?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/6.jpg" alt></p>
 <p>所以从这里能看出来，对于setTimeout，setInterval的定时，不一定完全按照设想的时间的，因为主线程里的代码可能复杂到执行很久，所以会发生你定时3秒后执行，实际上是3.5秒后执行（主线程花费了0.5秒）</p>
 <p>之后我会再写如何解决定时误差的内容。。。</p>
-<h3 id="借两个经典的图"><a href="#借两个经典的图" class="headerlink" title="借两个经典的图"></a>借两个经典的图</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818e049fd1a479?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16818e06c0ce968a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p><a href="https://juejin.im/post/5c2ec3b66fb9a049eb3c1012" target="_blank" rel="noopener">原文地址</a></p>
+<h3 id="借两个经典的图"><a href="#借两个经典的图" class="headerlink" title="借两个经典的图"></a>借两个经典的图</h3><p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/7.jpg" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/8.jpg" alt></p>
+<h3 id="setTimeout、setInterval"><a href="#setTimeout、setInterval" class="headerlink" title="setTimeout、setInterval"></a>setTimeout、setInterval</h3><p>关于这两个的延迟和解决办法，看这篇文章，也是<strong>经常考</strong>的一个知识点！！！</p>
+<p><a href="http://caibaojian.com/setinterval.html" target="_blank" rel="noopener">关于setInterval()你所不知道的地方</a></p>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>如上就是广义的事件循环机制，接下来我们再深入细化一下</p>
+<p>上面的任务消息队列，可以再细分为两种：</p>
+<p><strong>宏任务：</strong></p>
+<ul>
+<li>setTimeout，setInterval，setImmediate，requestAnimationFrame</li>
+<li>UI交互事件</li>
+<li>网络请求等等</li>
+</ul>
+<p>注意：一个setTimeout就相当于一个宏任务，所以队列里一堆回调函数都可以改叫为一个一个的任务</p>
+<p><strong>微任务：</strong></p>
+<ul>
+<li>Promise.then</li>
+<li>process.nextTick(Node.js 环境)</li>
+</ul>
+<p>注意：new Promise执行本身时是属于同步代码，只有.then才是微任务</p>
+<h3 id="广义轮询"><a href="#广义轮询" class="headerlink" title="广义轮询"></a>广义轮询</h3><p>所以我们之前所讲的，其流程应为：</p>
+<p>执行同步代码 ==&gt; 去宏任务队列里 ==&gt; 执行宏任务1 ==&gt; 执行宏任务2 …</p>
+<h3 id="微任务"><a href="#微任务" class="headerlink" title="微任务"></a>微任务</h3><p>加入微任务后，流程变为</p>
+<p>执行同步代码 ==&gt; <strong>检查微任务并执行</strong> ==&gt; 执行宏任务1 ==&gt; <strong>检查微任务并执行</strong> ==&gt; 执行宏任务2 ==&gt; <strong>检查微任务并执行</strong> ==&gt; 执行宏任务3 ……</p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/9.jpg" alt></p>
+<p>也就是说，之前说的所有异步都放进一个任务消息队列里，现在也就是分为两个任务队列了，比较容易理解。</p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/10.jpg" alt></p>
+<p><img src="/2020/03/22/%E5%89%8D%E7%AB%AF%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3/11.jpg" alt></p>
+<p>面试题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#39;1&#39;);</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&#39;2&#39;);</span><br><span class="line">    process.nextTick(function() &#123;</span><br><span class="line">        console.log(&#39;3&#39;);</span><br><span class="line">    &#125;)</span><br><span class="line">    new Promise(function(resolve) &#123;</span><br><span class="line">        console.log(&#39;4&#39;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function() &#123;</span><br><span class="line">        console.log(&#39;5&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">process.nextTick(function() &#123;</span><br><span class="line">    console.log(&#39;6&#39;);</span><br><span class="line">&#125;)</span><br><span class="line">new Promise(function(resolve) &#123;</span><br><span class="line">    console.log(&#39;7&#39;);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">    console.log(&#39;8&#39;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&#39;9&#39;);</span><br><span class="line">    process.nextTick(function() &#123;</span><br><span class="line">        console.log(&#39;10&#39;);</span><br><span class="line">    &#125;)</span><br><span class="line">    new Promise(function(resolve) &#123;</span><br><span class="line">        console.log(&#39;11&#39;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function() &#123;</span><br><span class="line">        console.log(&#39;12&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 执行结果为1,7,6,8,2,4,3,5,9,11,10,12</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>只要记住，每次执行完一个宏任务后都要去检查微任务就可以了。</p>
+<p><a href="https://juejin.im/post/5c2ec3b66fb9a049eb3c1012" target="_blank" rel="noopener">原文链接</a></p>
 
           
         
@@ -1694,7 +1953,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1716,7 +1975,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
